@@ -22,10 +22,18 @@
       <h2>Our Love Timeline</h2>
       <div class="event">
         <h3>Feb 14, 2025</h3>
+        <p>First Time Talking 😊</p>
+      </div>
+      <div class="event">
+        <h3>Feb 14, 2025</h3>
+        <p>First We Said "I Love You" 💞</p>
+      </div>
+      <div class="event">
+        <h3>Feb 14, 2025</h3>
         <p>First Valentine's Day Together And The Day We Met And Got Together 💘</p>
       </div>
       <div class="event">
-        <h3>Together Forver</h3>
+        <h3>2026 Soon To Happen</h3>
         <p>Soon To Be Engaged 💍</p>
       </div>
       <div class="event">
@@ -35,6 +43,7 @@
     </section>
 
     <p class="subtext countdown" id="next-countdown"></p>
+    <p class="subtext countdown" id="meeting-countdown"></p> <!-- New countdown here -->
 
     <div class="love-letter-trigger">💌 Open Love Letter</div>
   </div>
@@ -58,7 +67,6 @@
     <button id="musicToggle">▶️ Play Music</button>
     <audio id="backgroundMusic" loop>
       <source src="https://cdn.pixabay.com/download/audio/2022/03/26/audio_23808e765b.mp3?filename=romantic-piano-12197.mp3" type="audio/mpeg" />
-      <!-- Replace with your preferred romantic track -->
     </audio>
   </div>
 
@@ -159,6 +167,27 @@
     }
     updateCountdown();
     setInterval(updateCountdown, 1000);
+
+    // New countdown to meeting date: Feb 14, 2026
+    const meetingCountdownEl = document.getElementById('meeting-countdown');
+    const meetingDate = new Date('2026-02-14T00:00:00');
+
+    function updateMeetingCountdown() {
+      const now = new Date();
+      const diff = meetingDate - now;
+      if (diff <= 0) {
+        meetingCountdownEl.textContent = "We have met! ✈️❤️";
+        return;
+      }
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+      meetingCountdownEl.textContent = `Only ${days}d ${hours}h ${minutes}m ${seconds}s until we meet! ✈️💕`;
+    }
+
+    updateMeetingCountdown();
+    setInterval(updateMeetingCountdown, 1000);
 
     // Modal logic for love letter
     const modal = document.getElementById('modal');
