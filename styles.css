@@ -17,6 +17,7 @@ body {
   position: relative;
   overflow: hidden;
   color: #fff;
+  overflow-y: auto;
   flex-direction: column;
   padding: 20px;
 }
