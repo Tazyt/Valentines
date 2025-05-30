@@ -340,3 +340,53 @@ h1 .heart {
   0%, 100% { transform: scale(1);}
   50% { transform: scale(1.05);}
 }
+
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 30px 40px;
+    max-width: 90%;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .subtext {
+    font-size: 1rem;
+  }
+
+  .countdown {
+    font-size: 1rem;
+  }
+
+  #meeting-countdown {
+    padding: 15px 30px;
+    font-size: 1.1rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    padding: 20px 30px;
+    max-width: 95%;
+    border-radius: 15px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .subtext {
+    font-size: 0.9rem;
+  }
+
+  .countdown {
+    font-size: 0.9rem;
+  }
+
+  #meeting-countdown {
+    padding: 10px 20px;
+    font-size: 1rem;
+  }
+}
+
