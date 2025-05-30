@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>❤️ Love Journey with Katie</title>
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
   <div class="hearts-container"></div>
@@ -63,32 +64,55 @@
     </div>
   </div>
 
-  <div class="music-control">
-    <button id="musicToggle">▶️ Play Music</button>
-    <audio id="backgroundMusic" loop>
-      <source src="https://cdn.pixabay.com/download/audio/2022/03/26/audio_23808e765b.mp3?filename=romantic-piano-12197.mp3" type="audio/mpeg" />
-    </audio>
+<!-- Frosted Glass Compact Music Player -->
+<div class="music-player">
+  <div class="controls">
+    <button class="control-btn" id="prevBtn" title="Previous">
+      <i class="fas fa-backward"></i>
+    </button>
+    <button class="control-btn" id="toggleBtn" title="Play/Pause">
+      <i class="fas fa-play"></i>
+    </button>
+    <button class="control-btn" id="nextBtn" title="Next">
+      <i class="fas fa-forward"></i>
+    </button>
+    <button class="control-btn" id="loopBtn" title="Loop">
+      <i class="fas fa-redo"></i>
+    </button>
   </div>
 
+  <div class="progress-container" id="progressContainer">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+  <div class="volume-control">
+    <i class="fas fa-volume-up volume-icon"></i>
+    <input type="range" id="volumeSlider" min="0" max="1" step="0.01" />
+  </div>
+
+  <audio id="backgroundMusic" preload="auto" loop>
+    <source src="your-audio-file.mp3" type="audio/mpeg" />
+  </audio>
+</div>
+
+
   <script>
-    // Time Counter
+    // ===== Time Counter =====
     const loveTimeEl = document.getElementById('love-time');
     function updateTime() {
       const startDate = new Date('2025-02-14T00:00:00');
       const now = new Date();
       const diff = now - startDate;
-
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
       const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
       const minutes = Math.floor((diff / (1000 * 60)) % 60);
       const seconds = Math.floor((diff / 1000) % 60);
-
       loveTimeEl.textContent = `${days} days, ${hours} hours, ${minutes} minutes, and ${seconds} seconds`;
     }
     updateTime();
     setInterval(updateTime, 1000);
 
-    // Daily Quote with Typing Animation
+    // ===== Daily Quote with Typing Animation =====
     const quotes = [
       "You are my today and all of my tomorrows. 💖",
       "Every love story is beautiful, but ours is my favorite. 💕",
@@ -100,8 +124,6 @@
     ];
     const quoteEl = document.getElementById('daily-quote');
     const dayIndex = new Date().getDate() % quotes.length;
-
-    // Typing effect
     function typeText(text, element, speed = 50) {
       let i = 0;
       element.textContent = '';
@@ -116,13 +138,12 @@
     }
     typeText(quotes[dayIndex], quoteEl);
 
-    // Floating hearts and love messages
+    // ===== Floating Hearts and Love Messages =====
     const heartsContainer = document.querySelector('.hearts-container');
     const messagesContainer = document.querySelector('.love-messages-container');
     const loveMessages = [
       "I love you", "Forever yours", "My Valentine 💘", "You + Me", "Soulmates", "Endless Love", "You & Me"
     ];
-
     function createHeart() {
       const heart = document.createElement('div');
       heart.classList.add('heart-float');
@@ -133,7 +154,6 @@
       heartsContainer.appendChild(heart);
       setTimeout(() => heart.remove(), 5000);
     }
-
     function createLoveMessage() {
       const message = document.createElement('div');
       message.classList.add('love-message-float');
@@ -144,14 +164,12 @@
       messagesContainer.appendChild(message);
       setTimeout(() => message.remove(), 7000);
     }
-
     setInterval(createHeart, 300);
     setInterval(createLoveMessage, 2000);
 
-    // Countdown to next special date: Feb 14, 2026
+    // ===== Countdown to Next Special Date: Feb 14, 2026 =====
     const countdownEl = document.getElementById('next-countdown');
     const nextSpecialDate = new Date('2026-02-14T00:00:00');
-
     function updateCountdown() {
       const now = new Date();
       const diff = nextSpecialDate - now;
@@ -168,10 +186,9 @@
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-    // New countdown to meeting date: Feb 14, 2026
+    // ===== Countdown to Meeting Date: Feb 14, 2026 =====
     const meetingCountdownEl = document.getElementById('meeting-countdown');
     const meetingDate = new Date('2026-02-14T00:00:00');
-
     function updateMeetingCountdown() {
       const now = new Date();
       const diff = meetingDate - now;
@@ -185,15 +202,13 @@
       const seconds = Math.floor((diff / 1000) % 60);
       meetingCountdownEl.textContent = `Only ${days}d ${hours}h ${minutes}m ${seconds}s until we meet! ✈️💕`;
     }
-
     updateMeetingCountdown();
     setInterval(updateMeetingCountdown, 1000);
 
-    // Modal logic for love letter
+    // ===== Modal Logic for Love Letter =====
     const modal = document.getElementById('modal');
     const loveLetterTrigger = document.querySelector('.love-letter-trigger');
     const closeModalBtn = document.getElementById('closeModal');
-
     loveLetterTrigger.addEventListener('click', () => {
       modal.style.display = 'flex';
     });
@@ -205,20 +220,132 @@
         modal.style.display = 'none';
       }
     });
+  </script>
+  <script>
+window.addEventListener('DOMContentLoaded', () => {
+  const audio       = document.getElementById('backgroundMusic');
+  const playBtn     = document.getElementById('toggleBtn');
+  const prevBtn     = document.getElementById('prevBtn');
+  const nextBtn     = document.getElementById('nextBtn');
+  const loopBtn     = document.getElementById('loopBtn');
+  const progressBar = document.getElementById('progressBar');
+  const progCont    = document.getElementById('progressContainer');
+  const volSlider   = document.getElementById('volumeSlider');
+  const volIcon     = document.querySelector('.volume-icon');
+  const timeEl      = document.querySelector('.track-time');
 
-    // Background music toggle
-    const musicToggle = document.getElementById('musicToggle');
-    const backgroundMusic = document.getElementById('backgroundMusic');
+  // If you have multiple tracks, define them here:
+  const playlist = [
+    { src: 'https://cdn.discordapp.com/attachments/1373414250428760208/1378040785932386406/The_Weeknd_-_Sao_Paulo_feat._Anitta_Official_Music_Video.mp3?ex=683b27fe&is=6839d67e&hm=6d908b76d89f155221102f5ed347e6b77e14269599ffd7d08d6b2796af1df131&', title: 'Sweet Melody' },
+    { src: 'track2.mp3', title: 'Candy Hearts' },
+    // …
+  ];
+  let currentIndex = 0;
 
-    musicToggle.addEventListener('click', () => {
-      if (backgroundMusic.paused) {
-        backgroundMusic.play();
-        musicToggle.textContent = "⏸️ Pause Music";
-      } else {
-        backgroundMusic.pause();
-        musicToggle.textContent = "▶️ Play Music";
+  function formatTime(sec) {
+    const m = Math.floor(sec / 60).toString().padStart(2,'0');
+    const s = Math.floor(sec % 60).toString().padStart(2,'0');
+    return `${m}:${s}`;
+  }
+
+  function loadTrack(i) {
+    const track = playlist[i];
+    audio.src = track.src;
+    audio.load();
+    // optionally show title: document.querySelector('.track-info').textContent = track.title;
+    playBtn.innerHTML = '<i class="fas fa-play"></i>';
+  }
+
+  // initialize
+  loadTrack(currentIndex);
+  audio.volume = volSlider.value = 0.5;
+  loopBtn.classList.toggle('active', audio.loop);
+
+  playBtn.addEventListener('click', () => {
+    if (audio.paused) {
+      audio.play();
+      playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+    } else {
+      audio.pause();
+      playBtn.innerHTML = '<i class="fas fa-play"></i>';
+    }
+  });
+  prevBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + playlist.length) % playlist.length;
+    loadTrack(currentIndex);
+    audio.play();
+    playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+  });
+  nextBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % playlist.length;
+    loadTrack(currentIndex);
+    audio.play();
+    playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+  });
+  loopBtn.addEventListener('click', () => {
+    audio.loop = !audio.loop;
+    loopBtn.classList.toggle('active', audio.loop);
+    loopBtn.style.color = audio.loop ? '#ff1493' : '';
+  });
+
+  audio.addEventListener('timeupdate', () => {
+    if (!isNaN(audio.duration)) {
+      const pct = (audio.currentTime / audio.duration) * 100;
+      progressBar.style.width = pct + '%';
+      // compute remaining:
+      const remain = audio.duration - audio.currentTime;
+      timeEl.textContent = `${formatTime(audio.currentTime)} / -${formatTime(remain)}`;
+    }
+  });
+
+  progCont.addEventListener('click', e => {
+    const rect = progCont.getBoundingClientRect();
+    audio.currentTime = ((e.clientX - rect.left) / rect.width) * audio.duration;
+  });
+
+  volSlider.addEventListener('input', () => {
+    audio.volume = volSlider.value;
+    if (audio.volume === 0)        volIcon.className = 'fas fa-volume-mute volume-icon';
+    else if (audio.volume < 0.5)   volIcon.className = 'fas fa-volume-down volume-icon';
+    else                            volIcon.className = 'fas fa-volume-up volume-icon';
+  });
+
+  audio.addEventListener('ended', () => {
+    if (!audio.loop) nextBtn.click();
+  });
+
+  // Set initial time display once metadata loads
+  audio.addEventListener('loadedmetadata', () => {
+    timeEl.textContent = `00:00 / -${formatTime(audio.duration)}`;
+  });
+});
+</script>
+<script>
+    (function() {
+      // 1) list your asset paths (adjust extensions if needed)
+      const backgrounds = [
+        'assets/back1.png',
+        'assets/back2.png',
+        'assets/back3.png'
+      ];
+
+      // 2) start on a random one (optional)
+      let idx = Math.floor(Math.random() * backgrounds.length);
+
+      // 3) function to update the body background
+      function setBackground(i) {
+        document.body.style.backgroundImage = `url('${backgrounds[i]}')`;
       }
-    });
+
+      // 4) initial kick-off
+      setBackground(idx);
+
+      // 5) change every N milliseconds (e.g. 10 seconds = 10000ms)
+      setInterval(() => {
+        idx = (idx + 1) % backgrounds.length;
+        setBackground(idx);
+      }, 10000);
+    })();
   </script>
 </body>
 </html>
