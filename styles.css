@@ -304,8 +304,12 @@ h1 .heart {
   content: "❤️";
   font-size: 1.5rem;
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  height: 1.5rem; /* match the font size */
+  display: flex;
+  align-items: center;
   color: #ff1493;
   text-shadow: 0 0 10px #ff69b4;
   animation: beat 2s infinite alternate;
