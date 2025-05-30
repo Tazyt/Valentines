@@ -35,6 +35,25 @@ body::after {
   display: none;
 }
 
+.background-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
+  z-index: -1;
+}
+
+.background-layer.visible {
+  opacity: 1;
+}
+
+
 /* Decorative floating hearts and messages.
    Keeping them fixed lets the animations remain in place while the user scrolls. */
 .hearts-container,
