@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>❤️ Love Journey with Katie</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="hearts-container"></div>
+  <div class="love-messages-container"></div>
+
+  <div class="container">
+    <h1>
+      It's been <span class="heart">❤️</span>
+    </h1>
+    <p class="subtext" id="love-time"></p>
+    <p class="subtext quote" id="daily-quote"></p>
+    <p class="subtext">Celebrating our beautiful journey together 💕</p>
+
+    <section class="timeline">
+      <h2>Our Love Timeline</h2>
+      <div class="event">
+        <h3>Feb 14, 2025</h3>
+        <p>First Valentine's Day Together And The Day We Met And Got Together 💘</p>
+      </div>
+      <div class="event">
+        <h3>Together Forver</h3>
+        <p>Soon To Be Engaged 💍</p>
+      </div>
+      <div class="event">
+        <h3>Feb 14, 2026</h3>
+        <p>First Time Meeting ✈️</p>
+      </div>
+    </section>
+
+    <p class="subtext countdown" id="next-countdown"></p>
+
+    <div class="love-letter-trigger">💌 Open Love Letter</div>
+  </div>
+
+  <div class="modal-overlay" id="modal">
+    <div class="modal-content">
+      <button class="close-btn" id="closeModal">&times;</button>
+      <h2>My Dearest Katie,</h2>
+      <p>
+        Every moment with you fills my heart with joy and my soul with love. Thank you for being my forever Valentine.
+      </p>
+      <p>
+        Here's to many more days, hours, and seconds together, making memories and building our story.
+      </p>
+      <p>With all my love, ❤️</p>
+      <p><em>Your Partner Dayshan</em></p>
+    </div>
+  </div>
+
+  <div class="music-control">
+    <button id="musicToggle">▶️ Play Music</button>
+    <audio id="backgroundMusic" loop>
+      <source src="https://cdn.pixabay.com/download/audio/2022/03/26/audio_23808e765b.mp3?filename=romantic-piano-12197.mp3" type="audio/mpeg" />
+      <!-- Replace with your preferred romantic track -->
+    </audio>
+  </div>
+
+  <script>
+    // Time Counter
+    const loveTimeEl = document.getElementById('love-time');
+    function updateTime() {
+      const startDate = new Date('2025-02-14T00:00:00');
+      const now = new Date();
+      const diff = now - startDate;
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      loveTimeEl.textContent = `${days} days, ${hours} hours, ${minutes} minutes, and ${seconds} seconds`;
+    }
+    updateTime();
+    setInterval(updateTime, 1000);
+
+    // Daily Quote with Typing Animation
+    const quotes = [
+      "You are my today and all of my tomorrows. 💖",
+      "Every love story is beautiful, but ours is my favorite. 💕",
+      "I still get butterflies even though I’ve seen you a hundred times. 🦋",
+      "You’re the reason I believe in love. ❤️",
+      "With you, forever isn't long enough. 🌹",
+      "Love is composed of a single soul inhabiting two bodies. 💫",
+      "You’re my favorite notification. 💌"
+    ];
+    const quoteEl = document.getElementById('daily-quote');
+    const dayIndex = new Date().getDate() % quotes.length;
+
+    // Typing effect
+    function typeText(text, element, speed = 50) {
+      let i = 0;
+      element.textContent = '';
+      function typing() {
+        if (i < text.length) {
+          element.textContent += text.charAt(i);
+          i++;
+          setTimeout(typing, speed);
+        }
+      }
+      typing();
+    }
+    typeText(quotes[dayIndex], quoteEl);
+
+    // Floating hearts and love messages
+    const heartsContainer = document.querySelector('.hearts-container');
+    const messagesContainer = document.querySelector('.love-messages-container');
+    const loveMessages = [
+      "I love you", "Forever yours", "My Valentine 💘", "You + Me", "Soulmates", "Endless Love", "You & Me"
+    ];
+
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart-float');
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = 3 + Math.random() * 2 + "s";
+      heart.style.opacity = (0.3 + Math.random() * 0.7).toFixed(2);
+      heart.innerHTML = "💗";
+      heartsContainer.appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
+    }
+
+    function createLoveMessage() {
+      const message = document.createElement('div');
+      message.classList.add('love-message-float');
+      message.style.left = Math.random() * 100 + "vw";
+      message.style.animationDuration = 5 + Math.random() * 3 + "s";
+      message.style.opacity = (0.5 + Math.random() * 0.5).toFixed(2);
+      message.textContent = loveMessages[Math.floor(Math.random() * loveMessages.length)];
+      messagesContainer.appendChild(message);
+      setTimeout(() => message.remove(), 7000);
+    }
+
+    setInterval(createHeart, 300);
+    setInterval(createLoveMessage, 2000);
+
+    // Countdown to next special date: Feb 14, 2026
+    const countdownEl = document.getElementById('next-countdown');
+    const nextSpecialDate = new Date('2026-02-14T00:00:00');
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = nextSpecialDate - now;
+      if (diff <= 0) {
+        countdownEl.textContent = "Today is our special day! ❤️";
+        return;
+      }
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+      countdownEl.textContent = `Only ${days}d ${hours}h ${minutes}m ${seconds}s until our next Valentine's Day! 💝`;
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // Modal logic for love letter
+    const modal = document.getElementById('modal');
+    const loveLetterTrigger = document.querySelector('.love-letter-trigger');
+    const closeModalBtn = document.getElementById('closeModal');
+
+    loveLetterTrigger.addEventListener('click', () => {
+      modal.style.display = 'flex';
+    });
+    closeModalBtn.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+
+    // Background music toggle
+    const musicToggle = document.getElementById('musicToggle');
+    const backgroundMusic = document.getElementById('backgroundMusic');
+
+    musicToggle.addEventListener('click', () => {
+      if (backgroundMusic.paused) {
+        backgroundMusic.play();
+        musicToggle.textContent = "⏸️ Pause Music";
+      } else {
+        backgroundMusic.pause();
+        musicToggle.textContent = "▶️ Play Music";
+      }
+    });
+  </script>
+</body>
+</html>
