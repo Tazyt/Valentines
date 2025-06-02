@@ -325,30 +325,31 @@ window.addEventListener('DOMContentLoaded', () => {
 </script>
 <script>
     (function() {
-      // 1) list your asset paths (adjust extensions if needed)
-      const backgrounds = [
-        'assets/background/back1.png',
-        'assets/background/back2.png',
-        'assets/background/back3.png'
-      ];
+  // 1) list your asset paths (adjust extensions if needed)
+  const backgrounds = [
+    'assets/background/back1.png',
+    'assets/background/back2.png',
+    'assets/background/back3.png'
+  ];
 
-      // 2) start on a random one (optional)
-      let idx = Math.floor(Math.random() * backgrounds.length);
+  // 2) start on a random one (optional)
+  let idx = Math.floor(Math.random() * backgrounds.length);
 
-      // 3) function to update the body background
-      function setBackground(i) {
-        document.body.style.backgroundImage = `url('${backgrounds[i]}')`;
-      }
+  // 3) function to update the body background with cache-busting
+  function setBackground(i) {
+    const url = `${backgrounds[i]}?v=${Date.now()}`;
+    document.body.style.backgroundImage = `url('${url}')`;
+  }
 
-      // 4) initial kick-off
-      setBackground(idx);
+  // 4) initial kick-off
+  setBackground(idx);
 
-      // 5) change every N milliseconds (e.g. 10 seconds = 10000ms)
-      setInterval(() => {
-        idx = (idx + 1) % backgrounds.length;
-        setBackground(idx);
-      }, 10000);
-    })();
+  // 5) change every N milliseconds (e.g. 10 seconds = 10000ms)
+  setInterval(() => {
+    idx = (idx + 1) % backgrounds.length;
+    setBackground(idx);
+  }, 10000);
+})();
   </script>
 <script>
 // ===== Global Falling Hearts Animation =====
