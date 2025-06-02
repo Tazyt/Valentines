@@ -11,6 +11,7 @@
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
 <body>
+<div class="hearts-bg"></div>
   <div class="hearts-container"></div>
   <div class="love-messages-container"></div>
 
@@ -239,9 +240,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
   // If you have multiple tracks, define them here:
   const playlist = [
-    { src: 'https://cdn.discordapp.com/attachments/1373414250428760208/1378040785932386406/The_Weeknd_-_Sao_Paulo_feat._Anitta_Official_Music_Video.mp3?ex=683b27fe&is=6839d67e&hm=6d908b76d89f155221102f5ed347e6b77e14269599ffd7d08d6b2796af1df131&', title: 'Sweet Melody' },
-    { src: 'track2.mp3', title: 'Candy Hearts' },
-    // …
+  { src: 'assets/music/music1.mp3', title: 'Song 1' },
+  { src: 'assets/music/music2.mp3', title: 'Song 2' },
   ];
   let currentIndex = 0;
 
@@ -327,9 +327,9 @@ window.addEventListener('DOMContentLoaded', () => {
     (function() {
       // 1) list your asset paths (adjust extensions if needed)
       const backgrounds = [
-        'assets/back1.png',
-        'assets/back2.png',
-        'assets/back3.png'
+        'assets/background/back1.png',
+        'assets/background/back2.png',
+        'assets/background/back3.png'
       ];
 
       // 2) start on a random one (optional)
@@ -349,6 +349,54 @@ window.addEventListener('DOMContentLoaded', () => {
         setBackground(idx);
       }, 10000);
     })();
+  </script>
+<script>
+// ===== Global Falling Hearts Animation =====
+(function() {
+  const globalHeartsBg = document.querySelector('.global-hearts-bg');
+  function createGlobalHeart() {
+    const heart = document.createElement('div');
+    heart.classList.add('global-heart-float');
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.animationDuration = (3 + Math.random() * 2) + 's';
+    heart.style.opacity = (0.15 + Math.random() * 0.25).toFixed(2); // lighter for background
+    heart.innerHTML = '💗';
+    globalHeartsBg.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+  }
+  setInterval(createGlobalHeart, 200);
+})();
+  </script>
+<script>
+// Falling hearts animation
+(function() {
+  const heartsBg = document.querySelector('.hearts-bg');
+  const colors = ['#ffb6c1', '#ff69b4', '#ff1493', '#ff85a1', '#ffb3de'];
+  const numHearts = 30;
+
+  function randomBetween(a, b) {
+    return a + Math.random() * (b - a);
+  }
+
+  function createHeart() {
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.style.left = randomBetween(0, 100) + 'vw';
+    heart.style.animationDuration = randomBetween(4, 8) + 's';
+    heart.style.opacity = randomBetween(0.7, 1);
+    heart.style.background = `linear-gradient(135deg, ${colors[Math.floor(Math.random()*colors.length)]} 0%, ${colors[Math.floor(Math.random()*colors.length)]} 100%)`;
+    heart.style.transform = `rotate(-45deg) scale(${randomBetween(0.7, 1.2)})`;
+    heartsBg.appendChild(heart);
+    setTimeout(() => {
+      heart.remove();
+    }, 8000);
+  }
+
+  setInterval(createHeart, 300);
+  for (let i = 0; i < numHearts; i++) {
+    setTimeout(createHeart, i * 200);
+  }
+})();
   </script>
 </body>
 </html>
