@@ -256,7 +256,7 @@ h1 .heart {
 }
 
 .music-control button {
-  background: rgba(255 105 180 / 0.8);
+  background: rgba(255, 105, 180 / 0.8);
   border: none;
   padding: 10px 15px;
   border-radius: 50px;
@@ -626,3 +626,146 @@ h1 .heart {
   position: relative;
   z-index: 2;
 }
+
+/* Games We Love Section Styles */
+.games {
+  background-color: rgba(255, 255, 255, 0.15); /* Light frosted glass effect */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 15px;
+  padding: 20px;
+  margin: 30px auto;
+  max-width: 600px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  text-align: center;
+}
+
+.games h2 {
+  color: #ff69b4; /* Pinkish color, similar to other elements */
+  margin-bottom: 15px;
+  font-size: 1.8em;
+}
+
+.games ul {
+  list-style-type: none; /* Remove default bullet points */
+  padding: 0;
+  margin: 0;
+  text-align: center; /* Ensure li elements are centered if they are inline-block */
+}
+
+.games li { /* Or .game-item if you prefer to be more specific */
+  background-color: rgba(255, 105, 180, 0.2);
+  color: #fff;
+  /* Adjust padding: top, right, bottom, left */
+  /* Left padding = space_before_icon + icon_width + space_after_icon_before_text */
+  /* e.g., 8px + 24px + 8px = 40px */
+  padding: 10px 15px 10px 40px; 
+  margin-bottom: 10px;
+  border-radius: 8px;
+  font-size: 1.1em;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  display: inline-block; /* Allows centering of the li element by parent's text-align */
+  text-align: left; /* Aligns text to the left, next to the icon */
+  vertical-align: middle; /* Good for aligning inline-block elements */
+}
+
+.games li:hover {
+  background-color: rgba(255, 105, 180, 0.4);
+  transform: scale(1.03);
+}
+
+/* Remove .game-icon style as it's no longer used */
+/*
+.game-icon {
+  width: 24px; 
+  height: 24px; 
+  margin-right: 10px; 
+  vertical-align: middle; 
+}
+*/
+
+.roblox-game {
+  background-image: url('assets/icons/roblox.png'); /* Replace 'your-roblox-icon.png' with your actual file name */
+  background-repeat: no-repeat;
+  background-position: 8px center; 
+  background-size: 24px 24px; /* Icon size */
+}
+
+.starstable-game {
+  background-image: url('assets/icons/sso.png'); /* Replace 'your-starstable-icon.png' with your actual file name */
+  background-repeat: no-repeat;
+  background-position: 8px center; 
+  background-size: 24px 24px; /* Icon size */
+}
+
+/* Artists We Love Section Styles */
+.artists {
+  background-color: rgba(255, 255, 255, 0.18); /* Slightly more opaque */
+  backdrop-filter: blur(10px); /* Increased blur */
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px; /* More rounded */
+  padding: 30px; 
+  margin: 40px auto; /* Increased margin */
+  max-width: 650px; 
+  box-shadow: 0 10px 35px 0 rgba(255, 20, 147, 0.35); 
+  border: 1px solid rgba(255, 105, 180, 0.35); 
+  text-align: center;
+}
+
+.artists h2 {
+  color: #ff69b4; 
+  margin-bottom: 25px; 
+  font-size: 2em; /* Larger heading */
+  text-shadow: 0 0 10px rgba(255, 105, 180, 0.8);
+  display: flex; /* For icon alignment */
+  align-items: center;
+  justify-content: center;
+}
+
+.artists h2 .fa-heartbeat {
+  margin-left: 10px;
+  font-size: 0.9em; /* Slightly smaller than heading text */
+  color: var(--pink-dark); /* Use a defined pink color */
+  animation: beat 1.5s infinite alternate; /* Re-use beat animation */
+}
+
+.artists ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex; 
+  flex-wrap: wrap; 
+  justify-content: center; 
+  gap: 20px; /* Increased gap */
+}
+
+.artists .artist-item {
+  background: linear-gradient(145deg, rgba(255, 105, 180, 0.3), rgba(255, 20, 147, 0.35)); /* Gradient background */
+  color: #fff; 
+  padding: 15px 25px; 
+  border-radius: 25px; 
+  font-size: 1.15em; /* Slightly larger font */
+  font-weight: 500; 
+  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 105, 180, 0.4);
+  display: flex; /* For icon and text alignment */
+  align-items: center; /* Vertically center icon and text */
+  min-width: 180px; /* Minimum width for items */
+  justify-content: center; /* Center content if text is short */
+}
+
+.artists .artist-icon {
+  margin-right: 10px; /* Space between icon and text */
+  color: var(--pink-light); /* Use a defined light pink */
+  font-size: 1.2em; /* Icon size relative to text */
+}
+
+.artists .artist-item:hover {
+  background: linear-gradient(145deg, rgba(255, 105, 180, 0.45), rgba(255, 20, 147, 0.5));
+  transform: translateY(-5px) scale(1.08); 
+  box-shadow: 0 8px 25px rgba(255, 20, 147, 0.4);
+}
+
+/* ...existing styles... */
