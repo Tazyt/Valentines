@@ -3,60 +3,64 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>❤️ Love Journey with Katie</title>
+  <title>💖 Love Journey with Katie</title>
   <link rel="stylesheet" href="styles.css" id="mainStylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
 </head>
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-<meta http-equiv="Pragma" content="no-cache" />
-<meta http-equiv="Expires" content="0" />
 <body>
-<div class="hearts-bg"></div>
+  <!-- Remove pastel-gradient-bg and pastel-overlay to keep your custom backgrounds visible -->
+  <!-- <div class="pastel-gradient-bg"></div> -->
+  <!-- <div class="pastel-overlay"></div> -->
+  <div class="hearts-bg"></div>
   <div class="hearts-container"></div>
   <div class="love-messages-container"></div>
+  <div class="cute-sparkles"></div>
 
-  <div class="container">
-    <h1>
-      It's been <span class="heart">❤️</span>
-    </h1>
-    <p class="subtext" id="love-time"></p>
-    <p class="subtext quote" id="daily-quote"></p>
-    <p class="subtext">Celebrating our beautiful journey together 💕</p>
+  <div class="container cute-shadow readable">
+    <header class="cute-header">
+      <div class="cute-title-row">
+        <span class="cute-heart-emoji">❤️</span>
+        <span class="cute-title">Katie & Dayshan</span>
+        <span class="cute-heart-emoji">❤️</span>
+        <span class="cute-sparkle"><i class="fas fa-sparkles"></i></span>
+      </div>
+      <p class="cute-subtitle">Our Adorable Love Story <span class="cute-sparkle">✨</span></p>
+    </header>
 
-    <section class="timeline">
-      <h2>Our Love Timeline</h2>
-      <div class="event">
-        <h3>Feb 14, 2025</h3>
-        <p>First Time Talking 😊</p>
+    <!-- Only the cutest couple caption, no photo frames -->
+    <div class="cutest-couple-caption">Cutest Couple 💑</div>
+
+    <section class="cute-time-section">
+      <div class="cute-time-box">
+        <span class="cute-clock"><i class="fas fa-clock"></i></span>
+        <span id="love-time" class="cute-time"></span>
       </div>
-      <div class="event">
-        <h3>Feb 14, 2025</h3>
-        <p>First We Said "I Love You" 💞</p>
-      </div>
-      <div class="event">
-        <h3>Feb 14, 2025</h3>
-        <p>First Valentine's Day Together And The Day We Met And Got Together 💘</p>
-      </div>
-      <div class="event">
-        <h3>2026 Soon To Happen</h3>
-        <p>Soon To Be Engaged 💍</p>
-      </div>
-      <div class="event">
-        <h3>Feb 14, 2026</h3>
-        <p>First Time Meeting ✈️</p>
-      </div>
+      <div class="cute-quote" id="daily-quote"></div>
+      <div class="cute-journey">Celebrating our beautiful journey together <span class="cute-sparkle">💕</span></div>
     </section>
 
-    <section class="games">
-      <h2>Games We Love</h2>
+    <section class="timeline cute-section">
+      <h2><i class="fas fa-calendar-heart"></i> Our Love Timeline</h2>
+      <div class="event"><h3>Feb 14, 2025</h3><p>First "I Love You" <span>💞</span></p></div>
+      <div class="event"><h3>Feb 14, 2025</h3><p>First Valentine's Day & Got Together <span>💘</span></p></div>
+      <div class="event"><h3>Feb 14, 2026</h3><p>First Time Meeting <span>✈️</span></p></div>
+      <div class="event"><h3>2026 (Soon!)</h3><p>👀 Propsal Maybe 👀 <span></span></p></div>
+    </section>
+
+    <section class="games cute-section">
+      <h2><i class="fas fa-gamepad"></i> Games We Love</h2>
       <ul>
         <li class="game-item roblox-game">Roblox</li>
         <li class="game-item starstable-game">Star Stable</li>
       </ul>
     </section>
 
-    <section class="artists">
-      <h2>Artists We Adore <i class="fas fa-heartbeat"></i></h2>
+    <section class="artists cute-section">
+      <h2><i class="fas fa-music"></i> Artists We Adore <i class="fas fa-heartbeat"></i></h2>
       <ul>
         <li class="artist-item"><i class="fas fa-headphones-alt artist-icon"></i> Lil Peep</li>
         <li class="artist-item"><i class="fas fa-headphones-alt artist-icon"></i> Mr Kitty</li>
@@ -65,11 +69,17 @@
       </ul>
     </section>
 
-    <p class="subtext countdown" id="next-countdown"></p>
-    <p class="subtext countdown" id="meeting-countdown"></p> <!-- New countdown here -->
-
-    <div class="love-letter-trigger">💌 Open Love Letter</div>
+    <div class="cute-countdowns">
+      <p class="subtext countdown" id="next-countdown"></p>
+      <p class="subtext countdown" id="meeting-countdown"></p>
+    </div>
   </div>
+
+  <!-- Floating cute heart button for love letter, now with text -->
+  <button class="love-letter-fab love-letter-fab-wide" title="Open Love Letter" id="loveLetterFab">
+    <i class="fas fa-envelope-heart"></i>
+    <span class="fab-text">Open Me</span>
+  </button>
 
   <div class="modal-overlay" id="modal">
     <div class="modal-content">
@@ -98,37 +108,35 @@
     </div>
   </div>
 
-<!-- Frosted Glass Compact Music Player -->
-<div class="music-player">
-  <div class="controls">
-    <button class="control-btn" id="prevBtn" title="Previous">
-      <i class="fas fa-backward"></i>
-    </button>
-    <button class="control-btn" id="toggleBtn" title="Play/Pause">
-      <i class="fas fa-play"></i>
-    </button>
-    <button class="control-btn" id="nextBtn" title="Next">
-      <i class="fas fa-forward"></i>
-    </button>
-    <button class="control-btn" id="loopBtn" title="Loop">
-      <i class="fas fa-redo"></i>
-    </button>
+  <!-- Frosted Glass Compact Music Player -->
+  <div class="music-player">
+    <div class="controls">
+      <button class="control-btn" id="prevBtn" title="Previous">
+        <i class="fas fa-backward"></i>
+      </button>
+      <button class="control-btn" id="toggleBtn" title="Play/Pause">
+        <i class="fas fa-play"></i>
+      </button>
+      <button class="control-btn" id="nextBtn" title="Next">
+        <i class="fas fa-forward"></i>
+      </button>
+      <button class="control-btn" id="loopBtn" title="Loop">
+        <i class="fas fa-redo"></i>
+      </button>
+    </div>
+    <div class="progress-container" id="progressContainer">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+    <div class="volume-control">
+      <i class="fas fa-volume-up volume-icon"></i>
+      <input type="range" id="volumeSlider" min="0" max="1" step="0.01" />
+    </div>
+    <audio id="backgroundMusic" preload="auto" loop>
+      <source src="your-audio-file.mp3" type="audio/mpeg" />
+    </audio>
+    <div class="track-info"></div>
+    <div class="track-time"></div>
   </div>
-
-  <div class="progress-container" id="progressContainer">
-    <div class="progress-bar" id="progressBar"></div>
-  </div>
-
-  <div class="volume-control">
-    <i class="fas fa-volume-up volume-icon"></i>
-    <input type="range" id="volumeSlider" min="0" max="1" step="0.01" />
-  </div>
-
-  <audio id="backgroundMusic" preload="auto" loop>
-    <source src="your-audio-file.mp3" type="audio/mpeg" />
-  </audio>
-</div>
-
 
   <script>
     // ===== Time Counter =====
@@ -239,19 +247,33 @@
     updateMeetingCountdown();
     setInterval(updateMeetingCountdown, 1000);
 
-    // ===== Modal Logic for Love Letter =====
+    // ===== Modal Logic for Love Letter (FAB button) =====
     const modal = document.getElementById('modal');
-    const loveLetterTrigger = document.querySelector('.love-letter-trigger');
+    const loveLetterFab = document.getElementById('loveLetterFab');
     const closeModalBtn = document.getElementById('closeModal');
-    loveLetterTrigger.addEventListener('click', () => {
+
+    loveLetterFab.addEventListener('click', () => {
+      modal.classList.remove('close');
       modal.style.display = 'flex';
+      // Force reflow to restart animation if needed
+      void modal.offsetWidth;
+      modal.classList.add('open');
     });
-    closeModalBtn.addEventListener('click', () => {
-      modal.style.display = 'none';
-    });
+
+    function closeModalAnimated() {
+      modal.classList.remove('open');
+      modal.classList.add('close');
+      setTimeout(() => {
+        modal.style.display = 'none';
+        modal.classList.remove('close');
+      }, 350); // Match CSS animation duration
+    }
+
+    closeModalBtn.addEventListener('click', closeModalAnimated);
+
     window.addEventListener('click', (e) => {
       if (e.target === modal) {
-        modal.style.display = 'none';
+        closeModalAnimated();
       }
     });
 
@@ -433,7 +455,6 @@ window.addEventListener('DOMContentLoaded', () => {
 // Falling hearts animation
 (function() {
   const heartsBg = document.querySelector('.hearts-bg');
-  const colors = ['#ffb6c1', '#ff69b4', '#ff1493', '#ff85a1', '#ffb3de'];
   const numHearts = 30;
 
   function randomBetween(a, b) {
@@ -443,11 +464,11 @@ window.addEventListener('DOMContentLoaded', () => {
   function createHeart() {
     const heart = document.createElement('div');
     heart.className = 'heart';
+    heart.textContent = '💗';
     heart.style.left = randomBetween(0, 100) + 'vw';
     heart.style.animationDuration = randomBetween(4, 8) + 's';
     heart.style.opacity = randomBetween(0.7, 1);
-    heart.style.background = `linear-gradient(135deg, ${colors[Math.floor(Math.random()*colors.length)]} 0%, ${colors[Math.floor(Math.random()*colors.length)]} 100%)`;
-    heart.style.transform = `rotate(-45deg) scale(${randomBetween(0.7, 1.2)})`;
+    heart.style.fontSize = randomBetween(1.5, 2.3) + 'rem';
     heartsBg.appendChild(heart);
     setTimeout(() => {
       heart.remove();
@@ -462,12 +483,6 @@ window.addEventListener('DOMContentLoaded', () => {
   </script>
 </body>
 </html>
-</body>
-</html>
-  }
-})();
-  </script>
-</body>
 </html>
 </body>
 </html>
