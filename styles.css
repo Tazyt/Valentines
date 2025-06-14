@@ -247,6 +247,120 @@ h1 .heart {
   color: #ff1493;
 }
 
+/* Anniversary Popup Styles */
+.anniversary-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6); /* Darker overlay for focus */
+  display: none; /* Hidden by default */
+  justify-content: center;
+  align-items: center;
+  z-index: 10001; /* Higher than other elements */
+  backdrop-filter: blur(5px);
+}
+
+.anniversary-popup.visible {
+  display: flex;
+  animation: fadeInOverlay 0.5s ease-out forwards;
+}
+
+.anniversary-popup-content {
+  background: linear-gradient(145deg, #ffeff5, #ffe4f0); /* Soft pink gradient */
+  padding: 30px 40px;
+  border-radius: 25px;
+  max-width: 480px;
+  width: 90%;
+  color: #d1307b; /* Deep pink text */
+  box-shadow: 0 10px 40px rgba(255, 105, 180, 0.5);
+  position: relative;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  animation: fadeInScaleUp 0.6s 0.2s ease-out forwards;
+  opacity: 0; /* Start hidden for animation */
+  transform: scale(0.9); /* Start smaller for animation */
+  border: 2px solid #ff85b4;
+}
+
+/* Add this class for the closing animation */
+.anniversary-popup.closing .anniversary-popup-content {
+  animation: fadeOutScaleDown 0.4s ease-in forwards;
+}
+
+.anniversary-popup-content h2 {
+  margin-bottom: 20px;
+  font-size: 2.2rem;
+  color: #ff1493; /* Bright pink heading */
+  text-shadow: 0 0 10px rgba(255, 20, 147, 0.5);
+}
+
+.anniversary-popup-content p {
+  margin-bottom: 15px;
+  font-weight: 500;
+  font-size: 1.15rem;
+  line-height: 1.6;
+}
+
+.anniversary-hearts {
+  font-size: 2rem;
+  margin-top: 20px;
+  color: #ff69b4;
+  animation: gentleBeat 1.5s infinite alternate;
+}
+
+.anniversary-close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 2.5rem;
+  color: #c71585;
+  cursor: pointer;
+  font-weight: 700;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.anniversary-close-btn:hover {
+  color: #ff1493;
+  transform: scale(1.1);
+}
+
+@keyframes fadeInOverlay {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInScaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* New keyframes for closing animation */
+@keyframes fadeOutScaleDown {
+  from {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.9) translateY(10px);
+  }
+}
+
+@keyframes gentleBeat {
+  from { transform: scale(1); }
+  to { transform: scale(1.1); }
+}
+
 /* Music control button styles */
 .music-control {
   position: fixed;

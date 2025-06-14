@@ -86,6 +86,18 @@
     </div>
   </div>
 
+  <!-- Anniversary Popup -->
+  <div class="anniversary-popup" id="anniversaryPopup">
+    <div class="anniversary-popup-content">
+      <button class="anniversary-close-btn" id="closeAnniversaryPopup">&times;</button>
+      <h2>🎉 Happy Anniversary, My Love! ❤️</h2>
+      <p>Today marks another beautiful milestone in our journey together.</p>
+      <p>May our love continue to shine brighter with each passing year!</p>
+      <p>Forever and always, with all my heart.</p>
+      <div class="anniversary-hearts">💖✨💕</div>
+    </div>
+  </div>
+
 <!-- Frosted Glass Compact Music Player -->
 <div class="music-player">
   <div class="controls">
@@ -242,6 +254,44 @@
         modal.style.display = 'none';
       }
     });
+
+    // ===== Anniversary Popup Logic =====
+    const anniversaryPopup = document.getElementById('anniversaryPopup');
+    const closeAnniversaryPopupBtn = document.getElementById('closeAnniversaryPopup');
+
+    function checkAnniversary() {
+      const today = new Date();
+      const currentYear = today.getFullYear();
+      // February is month 1 (0-indexed), 14th is the date
+      const isAnniversaryDay = today.getMonth() === 1 && today.getDate() === 14;
+      
+      // Create a unique key for localStorage for the current year's anniversary
+      const localStorageKey = `anniversaryPopupShown_${currentYear}`;
+
+      if (isAnniversaryDay) {
+        // Check if the popup has already been shown for this year's anniversary
+        if (!localStorage.getItem(localStorageKey)) {
+          anniversaryPopup.classList.add('visible');
+          // Set the flag in localStorage so it doesn't show again automatically today
+          localStorage.setItem(localStorageKey, 'true');
+        }
+      }
+    }
+
+    if (closeAnniversaryPopupBtn) {
+      closeAnniversaryPopupBtn.addEventListener('click', () => {
+        anniversaryPopup.classList.add('closing'); // Add class to trigger closing animation
+        // Wait for animation to finish before hiding
+        setTimeout(() => {
+          anniversaryPopup.classList.remove('visible');
+          anniversaryPopup.classList.remove('closing'); // Reset class
+        }, 400); // Duration should match animation-duration in CSS
+      });
+    }
+    
+    // Check for anniversary when the page loads
+    window.addEventListener('DOMContentLoaded', checkAnniversary);
+
   </script>
   <script>
 window.addEventListener('DOMContentLoaded', () => {
@@ -417,5 +467,7 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 })();
   </script>
+</body>
+</html>
 </body>
 </html>
