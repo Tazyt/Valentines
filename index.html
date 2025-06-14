@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>❤️ Love Journey with Katie</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css" id="mainStylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
@@ -255,26 +255,19 @@
       }
     });
 
-    // ===== Anniversary Popup Logic =====
+    // ===== Anniversary Popup Logic (now Welcome Popup) =====
     const anniversaryPopup = document.getElementById('anniversaryPopup');
     const closeAnniversaryPopupBtn = document.getElementById('closeAnniversaryPopup');
 
-    function checkAnniversary() {
-      const today = new Date();
-      const currentYear = today.getFullYear();
-      // February is month 1 (0-indexed), 14th is the date
-      const isAnniversaryDay = today.getMonth() === 1 && today.getDate() === 14;
-      
-      // Create a unique key for localStorage for the current year's anniversary
-      const localStorageKey = `anniversaryPopupShown_${currentYear}`;
+    function checkAndShowWelcomePopup() {
+      // Generic key for the welcome popup
+      const localStorageKey = 'welcomePopupShown';
 
-      if (isAnniversaryDay) {
-        // Check if the popup has already been shown for this year's anniversary
-        if (!localStorage.getItem(localStorageKey)) {
-          anniversaryPopup.classList.add('visible');
-          // Set the flag in localStorage so it doesn't show again automatically today
-          localStorage.setItem(localStorageKey, 'true');
-        }
+      // Check if the popup has already been shown to this user
+      if (!localStorage.getItem(localStorageKey)) {
+        anniversaryPopup.classList.add('visible');
+        // Set the flag in localStorage so it doesn't show again automatically
+        localStorage.setItem(localStorageKey, 'true');
       }
     }
 
@@ -289,8 +282,8 @@
       });
     }
     
-    // Check for anniversary when the page loads
-    window.addEventListener('DOMContentLoaded', checkAnniversary);
+    // Check for welcome popup when the page loads
+    window.addEventListener('DOMContentLoaded', checkAndShowWelcomePopup);
 
   </script>
   <script>
@@ -464,6 +457,13 @@ window.addEventListener('DOMContentLoaded', () => {
   setInterval(createHeart, 300);
   for (let i = 0; i < numHearts; i++) {
     setTimeout(createHeart, i * 200);
+  }
+})();
+  </script>
+</body>
+</html>
+</body>
+</html>
   }
 })();
   </script>
