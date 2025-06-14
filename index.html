@@ -199,12 +199,14 @@
     function createLoveMessage() {
       const message = document.createElement('div');
       message.classList.add('love-message-float');
-      message.style.left = Math.random() * 100 + "vw";
-      message.style.animationDuration = 5 + Math.random() * 3 + "s";
+      message.style.left = Math.random() * 80 + "vw";
+      message.style.animationDuration = (5 + Math.random() * 3) + "s";
       message.style.opacity = (0.5 + Math.random() * 0.5).toFixed(2);
+      // Start above the screen
+      message.style.top = "-2em";
       message.textContent = loveMessages[Math.floor(Math.random() * loveMessages.length)];
       messagesContainer.appendChild(message);
-      setTimeout(() => message.remove(), 7000);
+      setTimeout(() => message.remove(), 8000);
     }
     setInterval(createHeart, 300);
     setInterval(createLoveMessage, 2000);
