@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const minutesEl = document.getElementById('minutes');
     const secondsEl = document.getElementById('seconds');
     const quoteEl = document.getElementById('daily-quote');
+    const anniversaryPopup = document.getElementById('anniversary-popup');
+    const closeBtn = document.querySelector('.close-btn');
 
     const loveQuotes = [
         "For my Emma: Every second with you is a second I cherish. I can't wait for all the seconds to come.",
@@ -55,6 +57,24 @@ document.addEventListener('DOMContentLoaded', () => {
         quoteEl.innerText = `"${loveQuotes[quoteIndex]}"`;
     }
 
+    function showAnniversaryPopup() {
+        const today = new Date();
+        const dayOfWeek = today.getDay(); // Sunday = 0, Wednesday = 3
+        const year = today.getFullYear();
+        const weekNumber = Math.ceil((((today - new Date(year, 0, 1)) / 86400000) + new Date(year, 0, 1).getDay() + 1) / 7);
+        const popupKey = `anniversaryPopup_${year}_${weekNumber}`;
+
+        // Show on Wednesday (day 3) and only if not already shown this week
+        if (dayOfWeek === 3 && !localStorage.getItem(popupKey)) {
+            anniversaryPopup.classList.add('show');
+            localStorage.setItem(popupKey, 'true');
+        }
+    }
+
+    function hideAnniversaryPopup() {
+        anniversaryPopup.classList.remove('show');
+    }
+
     function createHeart() {
         const heartsContainer = document.getElementById('hearts-container');
         const heart = document.createElement('div');
@@ -72,9 +92,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 7000); // Remove heart after animation
     }
 
+    // Event Listeners
+    closeBtn.addEventListener('click', hideAnniversaryPopup);
+    anniversaryPopup.addEventListener('click', (e) => {
+        if (e.target === anniversaryPopup) {
+            hideAnniversaryPopup();
+        }
+    });
+
     // Initial calls
     updateTimer();
     displayDailyQuote();
+    showAnniversaryPopup();
 
     // Update every second
     setInterval(updateTimer, 1000);
