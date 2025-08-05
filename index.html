@@ -2,59 +2,108 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dayshan & Emma - Our Journey</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Amber & Dayshan - Our Cosmic Journey</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="hearts-container"></div>
-    <div class="container">
-        <header>
-            <h1>To My Dearest Emma,</h1>
-            <p class="subtitle">From your loving Dayshan</p>
+    <div id="star-background">
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
+        <div class="floating-particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+    </div>
+
+    <div id="first-visit-popup" class="first-visit-popup">
+        <div class="first-visit-content">
+            <h2>Welcome to Our Love Story 💕</h2>
+            <div class="first-visit-message">
+                <p>My Beautiful Amber,</p>
+                <p>I created this special place just for you, to show you how much you mean to me. Every pixel, every word, every moment here is filled with my love for you.</p>
+                <p>You are my heart, my soul, my everything. I love you more than all the stars in the sky and all the roses in the world.</p>
+                <p>Welcome to our cosmic journey, my love. 🌹✨</p>
+            </div>
+            <button id="enter-btn" class="enter-btn">Enter Our Universe 💫</button>
+        </div>
+    </div>
+
+    <main id="journey-timeline">
+        <header class="timeline-item">
+            <div class="content">
+                <h1>To My Dearest Amber,</h1>
+                <p class="subtitle">Our love story is written in the stars...</p>
+            </div>
         </header>
 
-        <section class="timer-section">
-            <h2>Our love story has been going for:</h2>
-            <div id="timer">
-                <div class="time-box"><span id="days">0</span>Days</div>
-                <div class="time-box"><span id="hours">0</span>Hours</div>
-                <div class="time-box"><span id="minutes">0</span>Minutes</div>
-                <div class="time-box"><span id="seconds">0</span>Seconds</div>
+        <section class="timeline-item">
+            <div class="content timer-section">
+                <h2>Our journey has spanned:</h2>
+                <div id="timer">
+                    <div class="time-box"><div><span id="days">0</span>Days</div></div>
+                    <div class="time-box"><div><span id="hours">0</span>Hours</div></div>
+                    <div class="time-box"><div><span id="minutes">0</span>Minutes</div></div>
+                    <div class="time-box"><div><span id="seconds">0</span>Seconds</div></div>
+                </div>
             </div>
         </section>
 
-        <section class="quote-section">
-            <h2>A thought for you today:</h2>
-            <blockquote id="daily-quote">
-                "Loading today's special message for you..."
-            </blockquote>
-        </section>
-
-        <section class="letter-section">
-            <h2>A Letter From My Heart</h2>
-            <div class="letter">
-                <p>My darling Emma,</p>
-                <p>Even though our journey together has just begun, my heart is already overflowing with a love for you that I never knew was possible. Every moment with you feels like a beautiful dream, and I find myself smiling just thinking about you.</p>
-                <p>I know it's early, but I can already picture our future together. I can't wait to marry you, to build a home filled with laughter and joy, and to have a family with you. You are everything I've ever wanted.</p>
-                <p>Forever and always,</p>
-                <p>Dayshan ❤️</p>
+        <section class="timeline-item">
+            <div class="content quote-section">
+                <h2>A Thought For You</h2>
+                <blockquote id="daily-quote">
+                    "Loading today's special message for you..."
+                </blockquote>
             </div>
         </section>
-    </div>
+
+        <section class="timeline-item">
+            <div class="content letter-section">
+                <h2>A Letter From My Heart 🌹</h2>
+                <div class="letter">
+                    <p>My darling Amber,</p>
+                    <p>Even though our journey together has just begun, my heart is already overflowing with a love for you that I never knew was possible. Every moment with you feels like a beautiful dream, and I find myself smiling just thinking about you. You're as beautiful and precious to me as the roses you love so much.</p>
+                    <p>I know it's early, but I can already picture our future together. I can't wait to marry you, to build a home filled with laughter and joy, and to have a family with you. I'll fill our garden with roses, just like how you've filled my heart with love. You are everything I've ever wanted.</p>
+                    <p>Forever and always, like roses that bloom eternal,</p>
+                    <p>Dayshan ❤️🌹</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="timeline-item">
+            <div class="content gallery-section">
+                <h2>Our Future Memories</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item" title="A place for a cherished memory"><span>Our First Date</span></div>
+                    <div class="gallery-item" title="A place for a cherished memory"><span>Our First Holiday</span></div>
+                    <div class="gallery-item" title="A place for a cherished memory"><span>The Day We Marry</span></div>
+                </div>
+            </div>
+        </section>
+
+    </main>
 
     <div id="anniversary-popup" class="popup-overlay">
         <div class="popup-content">
             <span class="close-btn">&times;</span>
             <h2>Happy Weekly Anniversary, My Love!</h2>
             <div class="popup-letter">
-                <p>My Dearest Emma,</p>
-                <p>Can you believe it's already been a week? Every Wednesday feels like a special milestone with you knowing it's our Anniversary, a reminder of the beautiful journey we've started. Each day, I find myself falling for you more and more.</p>
-                <p>This past week has been filled with moments I'll cherish forever, all because you were in them. You bring so much light and happiness into my life, and I can't imagine a single day without you.</p>
-                <p>Here's to another week of love, laughter, and us. I love you more than words can say.</p>
+                <p>My Dearest Amber,</p>
+                <p>Can you believe it's already been another week? Every Sunday feels like a special milestone with you, a reminder of the beautiful journey we've started. Each day, I find myself falling for you more and more, like discovering a new rose in full bloom.</p>
+                <p>This past week has been filled with moments I'll cherish forever, all because you were in them. You bring so much light and happiness into my life, and I can't imagine a single day without you. You're my rose, my everything.</p>
+                <p>Here's to another week of love, laughter, and us. I love you more than words can say. 🌹</p>
                 <p>Forever yours,</p>
                 <p>Dayshan ❤️</p>
             </div>
