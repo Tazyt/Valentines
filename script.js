@@ -1,6 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Configuration - Set to true to show "Our Future Memories" section, false to hide it
     const SHOW_FUTURE_MEMORIES = false;
+    
+    // Testing configuration - Set to true to test the weekly anniversary popup
+    const TEST_WEEKLY_ANNIVERSARY = false;
 
     // Set the date you started dating: Month is 0-indexed (0=Jan, 7=Aug)
     // Using 3rd August 2025.
@@ -15,6 +18,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeBtn = document.querySelector('.close-btn');
     const firstVisitPopup = document.getElementById('first-visit-popup');
     const enterBtn = document.getElementById('enter-btn');
+    const roseGardenEl = document.getElementById('rose-garden');
+    const roseGardenTextEl = document.getElementById('rose-garden-text');
+    const roseLayer = document.getElementById('rose-layer');
+    let lastRoseCount = -1;
+    let lastIsFuture = null;
 
     const loveQuotes = [
         "For my Amber: Every second with you is a second I cherish. I can't wait for all the seconds to come. 🌹",
@@ -32,9 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateTimer() {
         const now = new Date();
         const diff = now - startDate;
-
-        // If diff is negative, the date is in the future. We can show a countdown.
-        // If diff is positive, the date is in the past. We show time elapsed.
         const isFuture = diff < 0;
         const targetDiff = Math.abs(diff);
 
@@ -50,10 +55,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const minutes = Math.floor((targetDiff % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((targetDiff % (1000 * 60)) / 1000);
 
-        daysEl.innerText = days;
-        hoursEl.innerText = hours;
-        minutesEl.innerText = minutes;
-        secondsEl.innerText = seconds;
+        daysEl.textContent = days;
+        hoursEl.textContent = hours;
+        minutesEl.textContent = minutes;
+        secondsEl.textContent = seconds;
+
+        updateRoseGarden(days, isFuture);
     }
 
     function displayDailyQuote() {
@@ -69,10 +76,53 @@ document.addEventListener('DOMContentLoaded', () => {
         const weekNumber = Math.ceil((((today - new Date(year, 0, 1)) / 86400000) + new Date(year, 0, 1).getDay() + 1) / 7);
         const popupKey = `anniversaryPopup_${year}_${weekNumber}`;
 
-        // Show on Sunday (day 0) and only if not already shown this week
-        if (dayOfWeek === 0 && !localStorage.getItem(popupKey)) {
+        // Calculate days since start date
+        const daysSinceStart = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
+        const isFirstWeek = daysSinceStart >= 6 && daysSinceStart <= 8; // Allow some flexibility for timing
+        
+        // Show popup conditions:
+        // 1. Testing mode is on, OR
+        // 2. It's Sunday AND we haven't shown this week's popup AND it's been at least a week
+        const shouldShow = TEST_WEEKLY_ANNIVERSARY || 
+                          (dayOfWeek === 0 && !localStorage.getItem(popupKey) && daysSinceStart >= 6);
+
+        if (shouldShow) {
+            // Update popup content based on whether it's the first week
+            updateAnniversaryPopupContent(isFirstWeek || TEST_WEEKLY_ANNIVERSARY);
             anniversaryPopup.classList.add('show');
-            localStorage.setItem(popupKey, 'true');
+            
+            // Only set the localStorage flag if not in testing mode
+            if (!TEST_WEEKLY_ANNIVERSARY) {
+                localStorage.setItem(popupKey, 'true');
+            }
+        }
+    }
+
+    function updateAnniversaryPopupContent(isFirstWeek) {
+        const popupTitle = anniversaryPopup.querySelector('h2');
+        const popupLetter = anniversaryPopup.querySelector('.popup-letter');
+        
+        if (isFirstWeek) {
+            popupTitle.innerHTML = 'Our First Week Together! 💕🌹';
+            popupLetter.innerHTML = `
+                <p>My Dearest Amber,</p>
+                <p>Can you believe it? Our very first week together! Seven magical days that have changed my entire world. Every single day with you has been like unwrapping the most precious gift - each moment more beautiful than the last.</p>
+                <p>This past week, you've shown me what true happiness feels like. Your smile lights up my days, your laugh is my favorite melody, and your love has become the most important thing in my life. You're like the most perfect rose that has bloomed in my heart's garden.</p>
+                <p>I know we're just at the beginning of our story, but I already can't imagine my life without you in it. You've brought so much joy, love, and meaning to every moment. Thank you for choosing to start this beautiful journey with me.</p>
+                <p>Here's to our first week - and to all the weeks, months, and years to come. I love you more than all the roses in the world, my darling. 🌹✨</p>
+                <p>Forever and always yours,</p>
+                <p>Dayshan ❤️💫</p>
+            `;
+        } else {
+            popupTitle.innerHTML = 'Happy Weekly Anniversary, My Love! 💕';
+            popupLetter.innerHTML = `
+                <p>My Dearest Amber,</p>
+                <p>Can you believe it's already been another week? Every Sunday feels like a special milestone with you, a reminder of the beautiful journey we've started. Each day, I find myself falling for you more and more, like discovering a new rose in full bloom.</p>
+                <p>This past week has been filled with moments I'll cherish forever, all because you were in them. You bring so much light and happiness into my life, and I can't imagine a single day without you. You're my rose, my everything.</p>
+                <p>Here's to another week of love, laughter, and us. I love you more than words can say. 🌹</p>
+                <p>Forever yours,</p>
+                <p>Dayshan ❤️</p>
+            `;
         }
     }
 
@@ -92,13 +142,11 @@ document.addEventListener('DOMContentLoaded', () => {
     function hideFirstVisitPopup() {
         firstVisitPopup.classList.remove('show');
         localStorage.setItem('hasVisited', 'true');
-        // Re-enable scrolling
         document.body.style.overflow = 'auto';
-        
-        // Start the main animations after popup closes
         setTimeout(() => {
             setupScrollAnimations();
             createFloatingRoses();
+            generateAmbientRoses();
         }, 500);
     }
 
@@ -110,6 +158,67 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 gallerySection.style.display = 'none';
             }
+        }
+    }
+
+    function updateRoseGarden(daysElapsed, isFuture) {
+        if (!roseGardenEl) return;
+        // Limit count for performance
+        const desiredCount = Math.min(daysElapsed + (isFuture ? 0 : 1), 60);
+        if (desiredCount === lastRoseCount && lastIsFuture === isFuture) return;
+
+        roseGardenEl.innerHTML = '';
+        if (isFuture) {
+            roseGardenTextEl.textContent = 'Planting seeds while we wait for Day 1...';
+        } else {
+            roseGardenTextEl.textContent = `A rose for each day we've had this precious love (${daysElapsed + 1} day${daysElapsed !== 0 ? 's' : ''}).`;
+        }
+
+        for (let i = 0; i < desiredCount; i++) {
+            createRoseElement(isFuture);
+        }
+        lastRoseCount = desiredCount;
+        lastIsFuture = isFuture;
+    }
+
+    function createRoseElement(isFuture) {
+        const div = document.createElement('button');
+        div.type = 'button';
+        div.className = 'rose' + (isFuture ? ' seed' : '');
+        div.setAttribute('aria-label', isFuture ? 'Seed' : 'Rose');
+        div.textContent = isFuture ? '🌱' : '🌹';
+        div.addEventListener('click', () => {
+            // Manual add (bonus rose)
+            const extra = document.createElement('span');
+            div.classList.add('added');
+            setTimeout(() => div.classList.remove('added'), 900);
+            const bonus = document.createElement('div');
+            bonus.className = 'rose';
+            bonus.textContent = isFuture ? '🌱' : '🌹';
+            bonus.classList.add('added');
+            roseGardenEl.appendChild(bonus);
+            setTimeout(() => bonus.classList.remove('added'), 900);
+        });
+        roseGardenEl.appendChild(div);
+    }
+
+    // Ambient decorative floating roses in background
+    function generateAmbientRoses(count = 18) {
+        if (!roseLayer) return;
+        for (let i = 0; i < count; i++) {
+            const r = document.createElement('div');
+            r.className = 'ambient-rose';
+            r.textContent = Math.random() > 0.2 ? '🌹' : '💗';
+            const duration = 24 + Math.random() * 26;
+            const delay = Math.random() * 25;
+            const left = Math.random() * 100;
+            const scale = 0.7 + Math.random() * 0.9;
+            r.style.left = left + '%';
+            r.style.bottom = (-10 - Math.random() * 20) + 'vh';
+            r.style.animationDuration = duration + 's';
+            r.style.animationDelay = delay + 's';
+            r.style.transform = `translateY(0) scale(${scale})`;
+            roseLayer.appendChild(r);
         }
     }
 
@@ -208,11 +317,13 @@ document.addEventListener('DOMContentLoaded', () => {
     createFloatingHearts();
     setupMobileInteractions();
     toggleFutureMemories(); // Apply the future memories visibility setting
+    generateAmbientRoses(10); // Light initial set
     
     // Only setup animations if not first visit
     if (localStorage.getItem('hasVisited')) {
         setupScrollAnimations();
         createFloatingRoses();
+        generateAmbientRoses();
     }
 
     // Update every second

@@ -27,6 +27,9 @@
         </div>
     </div>
 
+    <!-- Decorative ambient roses layer -->
+    <div id="rose-layer" aria-hidden="true"></div>
+
     <div id="first-visit-popup" class="first-visit-popup">
         <div class="first-visit-content">
             <h2>Welcome to Our Love Story 💕</h2>
@@ -40,7 +43,7 @@
         </div>
     </div>
 
-    <main id="journey-timeline">
+    <main id="journey-timeline" role="main">
         <header class="timeline-item">
             <div class="content">
                 <h1>To My Dearest Amber,</h1>
@@ -90,6 +93,18 @@
                     <div class="gallery-item" title="A place for a cherished memory"><span>Our First Holiday</span></div>
                     <div class="gallery-item" title="A place for a cherished memory"><span>The Day We Marry</span></div>
                 </div>
+            </div>
+        </section>
+
+        <!-- Rose Garden Section -->
+        <section class="timeline-item rose-garden-section">
+            <div class="content">
+                <h2 id="rose-garden-title">Our Rose Garden</h2>
+                <p class="rose-garden-desc">
+                    <span id="rose-garden-text">Growing a garden for us...</span>
+                </p>
+                <div id="rose-garden" class="rose-garden" aria-live="polite"></div>
+                <p class="rose-garden-hint">Tap / click to plant an extra rose 🌹</p>
             </div>
         </section>
 

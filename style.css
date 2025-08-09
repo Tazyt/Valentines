@@ -407,7 +407,56 @@ h2 {
 .popup-content h2 {
     border-bottom: 1px solid rgba(255, 215, 0, 0.3);
     padding-bottom: 15px;
+    position: relative;
 }
+
+/* Special first week styling */
+.popup-content h2:contains("First Week") {
+    background: linear-gradient(45deg, var(--gold-text), #ff69b4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Add floating hearts animation for special popups */
+.popup-content::before {
+    content: '💕 ✨ 💖 ✨ 💕';
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 16px;
+    opacity: 0.7;
+    animation: floatHearts 4s ease-in-out infinite;
+}
+
+@keyframes floatHearts {
+    0%, 100% {
+        transform: translateX(-50%) translateY(0px);
+    }
+    50% {
+        transform: translateX(-50%) translateY(-8px);
+    }
+}
+
+/* Enhanced glow effect for special occasions */
+.popup-overlay.show .popup-content {
+    box-shadow: 
+        0 0 30px var(--glow-color),
+        0 0 60px rgba(255, 105, 180, 0.4),
+        0 0 90px rgba(255, 105, 180, 0.2);
+}
+
 .popup-letter {
     text-align: left;
     margin-top: 20px;
@@ -725,37 +774,105 @@ h2 {
     }
 }
 
-/* Mobile adjustments for first visit popup */
-@media (max-width: 768px) {
-    .first-visit-content {
-        padding: 25px 20px;
-        margin: 20px;
-    }
-    
-    .first-visit-content h2 {
-        font-size: 1.8em;
-    }
-    
-    .first-visit-message {
-        font-size: 1.1em;
-    }
-    
-    .enter-btn {
-        padding: 12px 25px;
-        font-size: 1em;
-    }
+/* --- Ambient Rose Layer --- */
+#rose-layer {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+.ambient-rose {
+    position: absolute;
+    font-size: clamp(14px, 1.2vw, 28px);
+    filter: drop-shadow(0 0 6px rgba(255,105,180,0.5));
+    opacity: 0;
+    animation: ambientRoseFloat linear forwards;
+}
+@keyframes ambientRoseFloat {
+    0% { transform: translateY(20vh) scale(0.6) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.4; }
+    80% { opacity: 0.35; }
+    100% { transform: translateY(-110vh) scale(0.9) rotate(360deg); opacity: 0; }
 }
 
-@media (max-width: 480px) {
-    .first-visit-content {
-        padding: 20px 15px;
-    }
-    
-    .first-visit-content h2 {
-        font-size: 1.5em;
-    }
-    
-    .first-visit-message {
-        font-size: 1em;
-    }
+/* --- Rose Garden Section --- */
+.rose-garden-section .content {
+    position: relative;
+}
+.rose-garden-desc {
+    margin-top: -10px;
+    font-style: italic;
+    opacity: 0.85;
+    min-height: 24px;
+}
+.rose-garden-hint {
+    font-size: 0.85em;
+    opacity: 0.6;
+    margin-top: 15px;
+    letter-spacing: 0.5px;
+}
+.rose-garden {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 15px;
+    min-height: 70px;
+    position: relative;
+}
+.rose-garden .rose {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    animation: roseBloom 0.7s ease forwards;
+    transform: scale(0);
+    filter: drop-shadow(0 0 8px rgba(255,105,180,0.6));
+    transition: transform 0.25s ease, filter 0.3s ease;
+}
+.rose-garden .rose.seed { filter: drop-shadow(0 0 6px rgba(110,200,110,0.5)); }
+.rose-garden .rose:focus-visible {
+    outline: 2px solid var(--gold-text);
+    outline-offset: 3px;
+}
+.rose-garden .rose:hover {
+    transform: scale(1.15) rotate(-3deg);
+    filter: drop-shadow(0 0 12px rgba(255,215,0,0.7));
+}
+@keyframes roseBloom {
+    0% { transform: scale(0) rotate(-25deg); opacity: 0; }
+    60% { transform: scale(1.2) rotate(6deg); opacity: 1; }
+    100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+/* Burst feedback when adding manually */
+.rose-garden .rose.added::after {
+    content: '+1';
+    position: absolute;
+    top: -8px;
+    font-size: 10px;
+    color: var(--gold-text);
+    animation: floatUp 1s ease forwards;
+    text-shadow: 0 0 6px var(--glow-color);
+}
+@keyframes floatUp {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-14px); opacity: 0; }
+}
+
+/* Improve focus for interactive items */
+.gallery-item:focus-visible, .enter-btn:focus-visible, .time-box:focus-visible {
+    outline: 2px solid var(--gold-text);
+    outline-offset: 3px;
+}
+
+/* Mobile adjustments for garden */
+@media (max-width: 600px) {
+    .rose-garden { gap: 6px; }
+    .rose-garden .rose { width: 34px; height: 34px; font-size: 22px; }
 }
