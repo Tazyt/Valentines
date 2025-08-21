@@ -4,292 +4,492 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Katie Grice Upon <span class="blurred">Tyne</span> UK | Also Known as Nat Darkborn</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Base styles */
+        /* Base styles and variables */
+        :root {
+            --primary: #5865F2;
+            --secondary: #2c3e50;
+            --accent: #ff4757;
+            --light: #f8f9fa;
+            --dark: #333;
+            --gray: #6c757d;
+            --success: #2ed573;
+            --border-radius: 12px;
+            --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        html {
-            scroll-behavior: smooth;
-        }
+        
         body {
-            font-family: 'Segoe UI', 'Inter', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.7;
-            color: #222;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e3e6ee 100%);
-            min-height: 100vh;
-            transition: background 0.5s;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            overflow-x: hidden;
         }
+        
         .container {
-            width: 92%;
-            max-width: 1100px;
+            width: 90%;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 32px 0;
+            padding: 20px;
         }
+        
+        /* Header styles */
         header {
-            background: linear-gradient(90deg, #5865F2 0%, #2c3e50 100%);
+            background: linear-gradient(135deg, var(--secondary) 0%, #1a2530 100%);
             color: white;
-            padding: 2.5rem 0 2rem 0;
+            padding: 3rem 0;
             text-align: center;
-            margin-bottom: 2.5rem;
-            border-radius: 0 0 32px 32px;
-            box-shadow: 0 8px 32px rgba(88,101,242,0.08);
-            animation: fadeInDown 1s;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
         }
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-40px);}
-            to { opacity: 1; transform: translateY(0);}
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='0.1' d='M0,224L48,213.3C96,203,192,181,288,160C384,139,480,117,576,122.7C672,128,768,160,864,170.7C960,181,1056,171,1152,165.3C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+            background-size: cover;
+            background-position: center;
         }
+        
         h1 {
             font-size: 2.8rem;
-            font-weight: 800;
-            letter-spacing: 1px;
             margin-bottom: 0.5rem;
-            text-shadow: 0 2px 16px rgba(44,62,80,0.08);
+            position: relative;
+            animation: fadeInDown 1s ease;
         }
+        
         h2 {
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             margin: 1.5rem 0 1rem;
-            color: #5865F2;
-            font-weight: 700;
-            letter-spacing: 0.5px;
+            color: var(--secondary);
+            position: relative;
+            padding-bottom: 10px;
         }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 3px;
+        }
+        
         p {
             margin-bottom: 1rem;
-            font-size: 1.08rem;
         }
+        
         .blurred {
-            filter: blur(4px);
-            background: rgba(255,255,255,0.7);
+            filter: blur(5px);
+            background: #fff;
             color: transparent;
             text-shadow: 0 0 8px #333;
             border-radius: 3px;
             padding: 0 4px;
+            transition: var(--transition);
         }
-        /* Glassmorphism content sections */
+        
+        .blurred:hover {
+            filter: blur(0);
+            color: inherit;
+            text-shadow: none;
+        }
+        
+        /* Content sections */
         .content-section {
-            background: rgba(255,255,255,0.85);
-            border-radius: 18px;
-            padding: 2.2rem 2rem;
-            margin-bottom: 2.2rem;
-            box-shadow: 0 4px 32px rgba(88,101,242,0.07), 0 1.5px 8px rgba(44,62,80,0.04);
-            backdrop-filter: blur(4px);
-            transition: box-shadow 0.3s, transform 0.3s;
-            animation: fadeInUp 1.2s;
-        }
-        .content-section:hover {
-            box-shadow: 0 8px 48px rgba(88,101,242,0.13), 0 2px 12px rgba(44,62,80,0.08);
-            transform: translateY(-2px) scale(1.01);
-        }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(40px);}
-            to { opacity: 1; transform: translateY(0);}
-        }
-        /* Gallery */
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 22px;
-            margin-top: 1.5rem;
-        }
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 14px;
-            box-shadow: 0 2px 16px rgba(88,101,242,0.09);
-            cursor: pointer;
-            background: rgba(255,255,255,0.7);
-            transition: box-shadow 0.3s, transform 0.3s;
-            animation: fadeInUp 1.2s;
-        }
-        .gallery-item:hover {
-            box-shadow: 0 8px 32px rgba(88,101,242,0.18);
-            transform: scale(1.03);
-        }
-        .gallery-item img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            transition: transform 0.4s cubic-bezier(.23,1,.32,1), filter 0.3s;
-            border-radius: 14px;
-            filter: brightness(0.98) saturate(1.08);
-        }
-        .gallery-item:hover img {
-            transform: scale(1.07) rotate(-1deg);
-            filter: brightness(1.05) saturate(1.15);
-        }
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 100;
-            left: 0; top: 0;
-            width: 100vw; height: 100vh;
-            background: rgba(44,62,80,0.92);
-            animation: modalFadeIn 0.5s;
-            align-items: center;
-            justify-content: center;
-        }
-        .modal.show {
-            display: flex;
-            animation: modalFadeIn 0.5s;
-        }
-        @keyframes modalFadeIn {
-            from { opacity: 0;}
-            to { opacity: 1;}
-        }
-        .modal-content {
-            display: block;
-            margin: auto;
-            max-width: 92vw;
-            max-height: 80vh;
-            border-radius: 16px;
-            box-shadow: 0 8px 32px rgba(88,101,242,0.18);
-            animation: imgPop 0.6s;
-        }
-        @keyframes imgPop {
-            from { opacity: 0; transform: scale(0.8);}
-            to { opacity: 1; transform: scale(1);}
-        }
-        .close {
-            position: absolute;
-            top: 22px;
-            right: 44px;
-            color: #fff;
-            font-size: 44px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: color 0.2s;
-            z-index: 101;
-        }
-        .close:hover {
-            color: #5865F2;
-        }
-        /* Loading indicator */
-        .loading {
-            text-align: center;
-            padding: 2rem;
-            font-style: italic;
-            color: #5865F2;
-            font-size: 1.15rem;
-            animation: fadeInUp 1.2s;
-        }
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 2.5rem 0 2rem 0;
-            margin-top: 2.5rem;
-            background: linear-gradient(90deg, #5865F2 0%, #2c3e50 100%);
-            color: white;
-            border-radius: 32px 32px 0 0;
-            box-shadow: 0 -8px 32px rgba(88,101,242,0.08);
-            font-size: 1.05rem;
-            animation: fadeInUp 1.2s;
-        }
-        /* Popup styles */
-        #first-visit-popup {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100vw; height: 100vh;
-            background: rgba(44,62,80,0.96);
-            z-index: 999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 1;
-            transition: opacity 0.5s;
-            animation: modalFadeIn 0.7s;
-        }
-        #first-visit-popup.hide {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            box-shadow: var(--box-shadow);
+            transform: translateY(20px);
             opacity: 0;
-            pointer-events: none;
+            transition: var(--transition);
         }
-        #first-visit-popup div {
-            background: rgba(255,255,255,0.98);
-            padding: 2.5rem 2.8rem;
-            border-radius: 18px;
-            box-shadow: 0 8px 32px rgba(88,101,242,0.18);
-            max-width: 92vw;
-            text-align: center;
-            animation: imgPop 0.7s;
+        
+        .content-section.visible {
+            transform: translateY(0);
+            opacity: 1;
         }
-        #first-visit-popup h2 {
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-            color: #5865F2;
-        }
-        #first-visit-popup p {
-            font-size: 1.15rem;
-            margin-bottom: 2rem;
-        }
-        #close-popup-btn {
-            background: linear-gradient(90deg,#5865F2 0%,#2c3e50 100%);
-            color: #fff;
-            border: none;
-            padding: 0.8rem 2.2rem;
-            border-radius: 8px;
-            font-size: 1.08rem;
-            cursor: pointer;
-            font-weight: 600;
-            box-shadow: 0 2px 8px rgba(88,101,242,0.12);
-            transition: background 0.2s, transform 0.2s;
-        }
-        #close-popup-btn:hover {
-            background: linear-gradient(90deg,#2c3e50 0%,#5865F2 100%);
-            transform: scale(1.04);
-        }
+        
         /* Discord User Card */
         .discord-card {
             display: flex;
             align-items: center;
-            gap: 1.2rem;
-            padding: 1.2rem;
-            background: rgba(88,101,242,0.92);
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--primary) 0%, #414df1 100%);
             color: #fff;
-            border-radius: 12px;
-            box-shadow: 0 2px 12px rgba(88,101,242,0.13);
-            margin-bottom: 0.5rem;
-            transition: box-shadow 0.3s, transform 0.3s;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            max-width: 450px;
+            margin: 0 auto;
         }
+        
         .discord-card:hover {
-            box-shadow: 0 6px 24px rgba(88,101,242,0.18);
-            transform: scale(1.02);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(88, 101, 242, 0.2);
         }
-        .discord-card img {
-            width: 68px;
-            height: 68px;
+        
+        .discord-avatar {
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
-            border: 2px solid #fff;
-            box-shadow: 0 2px 8px rgba(44,62,80,0.09);
+            border: 3px solid #fff;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
-        .discord-card div {
+        
+        /* Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 1.5rem;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            cursor: pointer;
+            transform: scale(0.95);
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .gallery-item.visible {
+            transform: scale(1);
+            opacity: 1;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 100%);
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            padding-top: 50px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            opacity: 0;
+            transition: opacity 0.3s ease;
             display: flex;
-            flex-direction: column;
-            gap: 0.3rem;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
         }
-        .discord-card .username {
-            font-size: 1.22rem;
+        
+        .modal.open {
+            display: flex;
+            opacity: 1;
+            pointer-events: auto;
+            animation: modalFadeIn 0.4s;
+        }
+        
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.96);}
+            to { opacity: 1; transform: scale(1);}
+        }
+        
+        .modal-content {
+            display: block;
+            margin: 0 auto;
+            max-width: 90%;
+            max-height: 80%;
+            transform: scale(0.9);
+            transition: transform 0.3s cubic-bezier(.23,1,.32,1), box-shadow 0.3s;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+            cursor: pointer;
+        }
+        
+        .modal.open .modal-content {
+            transform: scale(1);
+            box-shadow: 0 12px 48px rgba(88,101,242,0.18);
+            animation: imgPop 0.5s;
+        }
+        
+        @keyframes imgPop {
+            from { opacity: 0; transform: scale(0.92);}
+            to { opacity: 1; transform: scale(1);}
+        }
+        
+        .modal-content.scaled {
+            transform: scale(1.04);
+            box-shadow: 0 16px 64px rgba(88,101,242,0.22);
+        }
+        
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
             font-weight: bold;
-            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: var(--transition);
         }
-        .discord-card .userid {
-            font-size: 1rem;
-            opacity: 0.85;
+        
+        .close:hover {
+            color: var(--accent);
+            transform: rotate(90deg);
         }
+        
+        /* Loading indicator */
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            font-style: italic;
+            color: var(--gray);
+            grid-column: 1 / -1;
+        }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(88, 101, 242, 0.2);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 4rem;
+            background: linear-gradient(135deg, var(--secondary) 0%, #1a2530 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='0.1' d='M0,128L48,117.3C96,107,192,85,288,112C384,139,480,213,576,224C672,235,768,181,864,160C960,139,1056,149,1152,165.3C1248,181,1344,203,1392,213.3L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+            background-size: cover;
+            background-position: center;
+        }
+        
+        /* Popup styles */
+        #first-visit-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(44, 62, 80, 0.95);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease, visibility 0.5s;
+        }
+        
+        #first-visit-popup.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        #first-visit-popup div {
+            background: #fff;
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+            max-width: 90vw;
+            text-align: center;
+            transform: translateY(-50px);
+            opacity: 0;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+            width: 500px;
+            max-width: 90%;
+        }
+        
+        #first-visit-popup.active div {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        #first-visit-popup h2 {
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+        
+        #first-visit-popup h2::after {
+            display: none;
+        }
+        
+        #first-visit-popup p {
+            font-size: 1.15rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .highlight {
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        #close-popup-btn {
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(88, 101, 242, 0.3);
+        }
+        
+        #close-popup-btn:hover {
+            background: #414df1;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(88, 101, 242, 0.4);
+        }
+        
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Text reveal animation */
+        .reveal-text {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .reveal-text.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
         /* Responsive adjustments */
-        @media (max-width: 900px) {
-            .container { padding: 18px 0;}
-            .content-section { padding: 1.2rem 1rem;}
-            .gallery { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.3rem;
+            }
+            
+            h2 {
+                font-size: 1.6rem;
+            }
+            
+            .content-section {
+                padding: 2rem;
+            }
         }
-        @media (max-width: 600px) {
-            h1 { font-size: 1.5rem;}
-            h2 { font-size: 1.1rem;}
-            .content-section { padding: 1rem 0.5rem;}
-            .gallery-item img { height: 110px;}
-            .discord-card img { width: 44px; height: 44px;}
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+            
+            .discord-card {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            header {
+                padding: 2rem 0;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .content-section {
+                padding: 1.5rem;
+            }
+            
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            #first-visit-popup div {
+                padding: 2rem 1.5rem;
+            }
         }
     </style>
 </head>
@@ -300,70 +500,110 @@
             <p>Also Known as Nat Darkborn</p>
         </div>
     </header>
+
     <!-- First visit popup -->
     <div id="first-visit-popup">
         <div>
             <h2>Hello there.. back again?</h2>
             <p>
-                have fun getting the entire chat log exposed. the more you continue the more gets added and the juicer
+                Have fun getting the entire chat log exposed. The more you continue the more gets added and the juicer.
             </p>
-            <p style="color:#5865F2;font-weight:bold;margin-bottom:1.5rem;">
-                Update V1. Added more images of offending her "best friend" and her telling me to control her while fingering. oh and David. there is the hurting "herself"
+            <p class="highlight">
+                Update V1. Added more images of offending her "best friend" and her telling me to control her while fingering. Oh and David. There is the hurting "herself". Oh and Katie. I told your father about the guy you met from snapchat secretly lmao
             </p>
             <button id="close-popup-btn">Continue</button> 
         </div>
     </div>
+    
     <div class="container">
         <section class="content-section">
             <h2>About This Page</h2>
-            <p>This website documents information about Katie Grice from Upon <span class="blurred">Tyne</span>, UK, who also operates under the alias Nat Darkborn.</p>
+            <p class="reveal-text">This website documents information about Katie Grice from Upon <span class="blurred">Tyne</span>, UK, who also operates under the alias Nat Darkborn.</p>
         </section>
+
         <!-- Discord User Card -->
-        <section class="content-section" style="max-width:400px;margin:auto;">
+        <section class="content-section">
             <h2>Discord User Card</h2>
             <div class="discord-card">
-                <img src="https://cdn.discordapp.com/embed/avatars/0.png" alt="Discord Avatar">
+                <img src="https://cdn.discordapp.com/embed/avatars/0.png" alt="Discord Avatar" class="discord-avatar">
                 <div>
-                    <div class="username">favkate</div>
-                    <div class="userid">ID: 1249028635365736563</div>
+                    <div style="font-size:1.3rem;font-weight:bold;">favkate</div>
+                    <div style="font-size:1rem;opacity:0.9;">ID: 1249028635365736563</div>
                 </div>
             </div>
         </section>
+
         <!-- Emma Section -->
-        <section class="content-section" style="max-width:400px;margin:auto;">
+        <section class="content-section">
             <h2>Emma</h2>
-            <p>Hmm you say your not mad yet.. you came at me tbf not mad at all. i just don't get why you come 2 weeks later and sending screenshots which btw.. she saw the chats so whateveer you show is useless.. you are right i did take time for myself till i met someone new. idk why your going around saying i asked for nudes when that never happened. but once again good try. just leave us be and stop coming after me. move on. we do not care what ANY of you guys have to say. and mostly you Katie... i mean just wow what a whore you are holy fuck. you'd like it if you get gangbanged for sure anyways have a good life Emma i have nothing against you and i'd like to leave everything in the past.</p>
+            <p class="reveal-text">Hmm you say your not mad yet.. you came at me tbf not mad at all. I just don't get why you come 2 weeks later and sending screenshots which btw.. she saw the chats so whatever you show is useless.. You are right I did take time for myself till I met someone new. IDK why your going around saying I asked for nudes when that never happened. But once again good try. Just leave us be and stop coming after me. Move on. We do not care what ANY of you guys have to say. And mostly you Katie... I mean just wow what a whore you are holy fuck. You'd like it if you get gangbanged for sure anyways have a good life Emma I have nothing against you and I'd like to leave everything in the past.</p>
         </section>
+        
         <section class="content-section">
             <h2>Image Gallery</h2>
-            <p>The following images are automatically loaded from the specified folder:</p>
+            <p class="reveal-text">The following images are automatically loaded from the specified folder:</p>
+            
             <div id="gallery-container" class="gallery">
-                <div class="loading">Loading images...</div>
+                <div class="loading">
+                    <div class="spinner"></div>
+                    Loading images...
+                </div>
             </div>
         </section>
+        
         <section class="content-section">
             <h2>Additional Information</h2>
-            <p>This section contains further details about the individual in question.</p>
-            you keep coming after me yet it fails... anyways enjoy me exposing everything oh and Emma good job for adding her back and believeing her goofy ass 😭 you claim i am dating a 13 year old when no i would never do that.. the person your talking about is Meliz which i made clear on screenshare it's wrong infact she blocked me lmao but congrats. she also sent me the most freakiest shit ever and she smokes damn? looks like you and katie match ngl both whores and more used then a school bag 🔥🔥🔥. Lowkey even your bestfriend coke told me to leave you ahh let's not mention how you had your ex best friend back you up and acted as if she knew everything yet she was never updated with anything and your asses always fighting. kinda goofy icl. keep trying to ruin my shit and il ruin yours. Hmm oh you deleted the messages of you talking shit about her?? aww is something wrong? anyways next is the chat logs on snap tiktok ect. i am going FULL on you. even refusing to remove my best friend?? hmm funny how i removed all girls yet.. when i then added a girl for you having my friend you didn't enjoy it so much.. you said you didn't accept dudes as friends? funny. oh and sending your thighs to my best friend?? calling him baby?? does that ring a bell? oh and using an alt one of his btw to message him??. how are you this big of a whore? no wonder you play Dollhouse Roleplay and Evade. turns out that's where most E-Daters are. but enjoy your life and fuck off because unlike you i actually moved on and i'm not trying to ruin relationships. so let me be. oh and just so you know i'm sending this site to your father so he can see how big of a fucking liar and how big of a slut you are 😭 and you even offered my best friend for nudes?? DAMN. Crazy work.
+            <div class="reveal-text">
+                <p>You keep coming after me yet it fails... Anyways enjoy me exposing everything oh and Emma good job for adding her back and believing her goofy ass 😭 You claim I am dating a 13 year old when no I would never do that.. The person your talking about is Meliz which I made clear on screenshare it's wrong in fact she blocked me lmao but congrats. She also sent me the most freakiest shit ever and she smokes damn? Looks like you and Katie match ngl both whores and more used then a school bag 🔥🔥🔥.</p>
+                <p>Lowkey even your bestfriend coke told me to leave you ahh let's not mention how you had your ex best friend back you up and acted as if she knew everything yet she was never updated with anything and your asses always fighting. Kinda goofy icl. Keep trying to ruin my shit and I'll ruin yours.</p>
+                <p>Hmm oh you deleted the messages of you talking shit about her?? Aww is something wrong? Anyways next is the chat logs on snap TikTok etc. I am going FULL on you. Even refusing to remove my best friend?? Hmm funny how I removed all girls yet.. When I then added a girl for you having my friend you didn't enjoy it so much.. You said you didn't accept dudes as friends? Funny.</p>
+                <p>Oh and sending your thighs to my best friend?? Calling him baby?? Does that ring a bell? Oh and using an alt one of his btw to message him?? How are you this big of a whore? No wonder you play Dollhouse Roleplay and Evade. Turns out that's where most E-Daters are. But enjoy your life and fuck off because unlike you I actually moved on and I'm not trying to ruin relationships. So let me be.</p>
+                <p>Oh and just so you know I'm sending this site to your father so he can see how big of a fucking liar and how big of a slut you are 😭 And you even offered my best friend for nudes?? DAMN. Crazy work.</p>
+            </div>
         </section>
     </div>
+    
     <!-- Modal for image preview -->
     <div id="imageModal" class="modal">
         <span class="close">&times;</span>
         <img class="modal-content" id="modalImage">
     </div>
+    
     <footer>
         <div class="container">
             <p>© 2025 - Information Disclosure</p>
         </div>
     </footer>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const galleryContainer = document.getElementById('gallery-container');
             const modal = document.getElementById('imageModal');
             const modalImg = document.getElementById('modalImage');
             const closeBtn = document.querySelector('.close');
+            const contentSections = document.querySelectorAll('.content-section');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            const revealTexts = document.querySelectorAll('.reveal-text');
+            const popup = document.getElementById('first-visit-popup');
+            const closePopupBtn = document.getElementById('close-popup-btn');
+            
+            // Show popup on first load
+            setTimeout(() => {
+                popup.classList.add('active');
+            }, 1000);
+            
+            // Close popup
+            if (closePopupBtn) {
+                closePopupBtn.addEventListener('click', function() {
+                    popup.classList.remove('active');
+                });
+            }
+            
+            // Replace with your actual image folder path
             const imageFolder = 'src/';
+            
+            // Array of image filenames - replace with your actual image filenames
+            // In a real implementation, you might want to fetch this list from the server
             const imageFiles = [
                 'image.png',
                 'image1.png',
@@ -392,56 +632,128 @@
                 'image24.png',
                 'image25.png'
             ];
-            // Smooth gallery loader
+            
+            // Intersection Observer for animations
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe all sections and text elements
+            contentSections.forEach(section => {
+                observer.observe(section);
+            });
+            
+            revealTexts.forEach(text => {
+                observer.observe(text);
+            });
+            
+            // Advanced image loader with fallback conversion
             function loadGalleryImages() {
-                galleryContainer.innerHTML = '';
+                galleryContainer.innerHTML = ''; // Clear loading message
+
                 if (imageFiles.length === 0) {
                     galleryContainer.innerHTML = '<div class="loading">No images found in the specified folder.</div>';
                     return;
                 }
-                imageFiles.forEach((filename, idx) => {
+
+                imageFiles.forEach((filename, index) => {
                     const imgPath = imageFolder + filename;
                     const galleryItem = document.createElement('div');
                     galleryItem.className = 'gallery-item';
-                    galleryItem.style.animationDelay = (0.05 * idx) + 's';
+
                     const img = document.createElement('img');
                     img.src = imgPath;
                     img.alt = 'Gallery image';
                     img.loading = 'lazy';
+
+                    // Fallback: try to convert image to PNG if it fails to load
                     img.onerror = function() {
-                        img.alt = 'Image failed to load';
-                        img.style.background = '#eee';
+                        fetch(imgPath)
+                            .then(response => response.blob())
+                            .then(blob => {
+                                const reader = new FileReader();
+                                reader.onload = function(e) {
+                                    const image = new window.Image();
+                                    image.onload = function() {
+                                        const canvas = document.createElement('canvas');
+                                        canvas.width = image.width;
+                                        canvas.height = image.height;
+                                        const ctx = canvas.getContext('2d');
+                                        ctx.drawImage(image, 0, 0);
+                                        try {
+                                            img.src = canvas.toDataURL('image/png');
+                                        } catch (err) {
+                                            img.alt = 'Image failed to load';
+                                            img.style.background = '#eee';
+                                        }
+                                    };
+                                    image.src = e.target.result;
+                                };
+                                reader.readAsDataURL(blob);
+                            })
+                            .catch(() => {
+                                img.alt = 'Image failed to load';
+                                img.style.background = '#eee';
+                            });
                     };
+
                     galleryItem.appendChild(img);
                     galleryContainer.appendChild(galleryItem);
+
+                    // Add staggered animation delay
+                    galleryItem.style.transitionDelay = `${index * 0.05}s`;
+                    
+                    // Observe for animation
+                    setTimeout(() => {
+                        observer.observe(galleryItem);
+                    }, 100);
+
+                    // Add click event to open modal
                     galleryItem.addEventListener('click', () => {
-                        modal.classList.add('show');
+                        modal.classList.add('open');
                         modalImg.src = img.src;
+                        modalImg.classList.remove('scaled');
+                        setTimeout(() => {
+                            modalImg.style.opacity = '1';
+                        }, 100);
                     });
                 });
             }
-            // Close modal with animation
+            
+            // Close modal when clicking the X
             closeBtn.addEventListener('click', () => {
-                modal.classList.remove('show');
-                setTimeout(() => { modalImg.src = ''; }, 400);
+                modal.classList.remove('open');
+                modalImg.src = '';
             });
+            
+            // Close modal when clicking outside the image
             modal.addEventListener('click', (e) => {
                 if (e.target === modal) {
-                    modal.classList.remove('show');
-                    setTimeout(() => { modalImg.src = ''; }, 400);
+                    modal.classList.remove('open');
+                    modalImg.src = '';
                 }
             });
-            // Popup logic with fade out
-            var popup = document.getElementById('first-visit-popup');
-            var closePopupBtn = document.getElementById('close-popup-btn');
-            if (closePopupBtn) {
-                closePopupBtn.addEventListener('click', function() {
-                    popup.classList.add('hide');
-                    setTimeout(() => { popup.style.display = 'none'; }, 600);
-                });
-            }
+            
+            // Add scale effect on modal image click
+            modalImg.addEventListener('click', () => {
+                modalImg.classList.add('scaled');
+                setTimeout(() => {
+                    modalImg.classList.remove('scaled');
+                }, 180);
+            });
+            
             // Initialize the gallery
-            loadGalleryImages();
+            setTimeout(loadGalleryImages, 1500);
         });
     </script>
 </body>
