@@ -2,129 +2,295 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Amber & Dayshan - Our Cosmic Journey</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katie Grice Upon <span class="blurred">Tyne</span> UK | Also Known as Nat Darkborn</title>
+    <style>
+        /* Base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            margin: 1.5rem 0 1rem;
+            color: #2c3e50;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        .blurred {
+            filter: blur(5px);
+            background: #fff;
+            color: transparent;
+            text-shadow: 0 0 8px #333;
+            border-radius: 3px;
+            padding: 0 4px;
+        }
+        
+        /* Content sections */
+        .content-section {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 1.5rem;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            padding-top: 50px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+        
+        .modal-content {
+            display: block;
+            margin: 0 auto;
+            max-width: 90%;
+            max-height: 80%;
+        }
+        
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        /* Loading indicator */
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            font-style: italic;
+            color: #666;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+            background-color: #2c3e50;
+            color: white;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+        }
+    </style>
 </head>
 <body>
-    <div id="star-background">
-        <div id="stars"></div>
-        <div id="stars2"></div>
-        <div id="stars3"></div>
-        <div class="floating-particles">
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
+    <header>
+        <div class="container">
+            <h1>Katie Grice Upon <span class="blurred">Tyne</span> UK</h1>
+            <p>Also Known as Nat Darkborn</p>
         </div>
-    </div>
+    </header>
+    
+    <div class="container">
+        <section class="content-section">
+            <h2>About This Page</h2>
+            <p>This website documents information about Katie Grice from Upon <span class="blurred">Tyne</span>, UK, who also operates under the alias Nat Darkborn.</p>
+        </section>
 
-    <!-- Decorative ambient roses layer -->
-    <div id="rose-layer" aria-hidden="true"></div>
-
-    <div id="first-visit-popup" class="first-visit-popup">
-        <div class="first-visit-content">
-            <h2>Welcome to Our Love Story 💕</h2>
-            <div class="first-visit-message">
-                <p>My Beautiful Amber,</p>
-                <p>I created this special place just for you, to show you how much you mean to me. Every pixel, every word, every moment here is filled with my love for you.</p>
-                <p>You are my heart, my soul, my everything. I love you more than all the stars in the sky and all the roses in the world.</p>
-                <p>Welcome to our cosmic journey, my love. 🌹✨</p>
-            </div>
-            <button id="enter-btn" class="enter-btn">Enter Our Universe 💫</button>
-        </div>
-    </div>
-
-    <main id="journey-timeline" role="main">
-        <header class="timeline-item">
-            <div class="content">
-                <h1>To My Dearest Amber,</h1>
-                <p class="subtitle">Our love story is written in the stars...</p>
-            </div>
-        </header>
-
-        <section class="timeline-item">
-            <div class="content timer-section">
-                <h2>Our journey has spanned:</h2>
-                <div id="timer">
-                    <div class="time-box"><div><span id="days">0</span>Days</div></div>
-                    <div class="time-box"><div><span id="hours">0</span>Hours</div></div>
-                    <div class="time-box"><div><span id="minutes">0</span>Minutes</div></div>
-                    <div class="time-box"><div><span id="seconds">0</span>Seconds</div></div>
+        <!-- Discord User Card -->
+        <section class="content-section" style="max-width:400px;margin:auto;">
+            <h2>Discord User Card</h2>
+            <div style="display:flex;align-items:center;gap:1rem;padding:1rem;background:#5865F2;color:#fff;border-radius:8px;">
+                <img src="https://cdn.discordapp.com/embed/avatars/0.png" alt="Discord Avatar" style="width:64px;height:64px;border-radius:50%;border:2px solid #fff;">
+                <div>
+                    <div style="font-size:1.2rem;font-weight:bold;">favkate</div>
+                    <div style="font-size:0.95rem;">ID: 1249028635365736563</div>
                 </div>
             </div>
         </section>
-
-        <section class="timeline-item">
-            <div class="content quote-section">
-                <h2>A Thought For You</h2>
-                <blockquote id="daily-quote">
-                    "Loading today's special message for you..."
-                </blockquote>
+        
+        <section class="content-section">
+            <h2>Image Gallery</h2>
+            <p>The following images are automatically loaded from the specified folder:</p>
+            
+            <div id="gallery-container" class="gallery">
+                <div class="loading">Loading images...</div>
             </div>
         </section>
-
-        <section class="timeline-item">
-            <div class="content letter-section">
-                <h2>A Letter From My Heart 🌹</h2>
-                <div class="letter">
-                    <p>My darling Amber,</p>
-                    <p>Even though our journey together has just begun, my heart is already overflowing with a love for you that I never knew was possible. Every moment with you feels like a beautiful dream, and I find myself smiling just thinking about you. You're as beautiful and precious to me as the roses you love so much.</p>
-                    <p>I know it's early, but I can already picture our future together. I can't wait to marry you, to build a home filled with laughter and joy, and to have a family with you. I'll fill our garden with roses, just like how you've filled my heart with love. You are everything I've ever wanted.</p>
-                    <p>Forever and always, like roses that bloom eternal,</p>
-                    <p>Dayshan ❤️🌹</p>
-                </div>
-            </div>
+        
+        <section class="content-section">
+            <h2>Additional Information</h2>
+            <p>This section contains further details about the individual in question.</p>
+            you keep coming after me yet it fails... anyways enjoy me exposing everything oh and Emma good job for adding her back and believeing her goofy ass 😭 you claim i am dating a 13 year old when no i would never do that.. the person your talking about is Meliz which i made clear on screenshare it's wrong infact she blocked me lmao but congrats. she also sent me the most freakiest shit ever and she smokes damn? looks like you and katie match ngl both whores and more used then a school bag 🔥🔥🔥. Lowkey even your bestfriend coke told me to leave you ahh let's not mention how you had your ex best friend back you up and acted as if she knew everything yet she was never updated with anything and your asses always fighting. kinda goofy icl. keep trying to ruin my shit and il ruin yours. Hmm oh you deleted the messages of you talking shit about her?? aww is something wrong? anyways next is the chat logs on snap tiktok ect. i am going FULL on you. even refusing to remove my best friend?? hmm funny how i removed all girls yet.. when i then added a girl for you having my friend you didn't enjoy it so much.. you said you didn't accept dudes as friends? funny.
         </section>
-
-        <section class="timeline-item">
-            <div class="content gallery-section">
-                <h2>Our Future Memories</h2>
-                <div class="gallery-grid">
-                    <div class="gallery-item" title="A place for a cherished memory"><span>Our First Date</span></div>
-                    <div class="gallery-item" title="A place for a cherished memory"><span>Our First Holiday</span></div>
-                    <div class="gallery-item" title="A place for a cherished memory"><span>The Day We Marry</span></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Rose Garden Section -->
-        <section class="timeline-item rose-garden-section">
-            <div class="content">
-                <h2 id="rose-garden-title">Our Rose Garden</h2>
-                <p class="rose-garden-desc">
-                    <span id="rose-garden-text">Growing a garden for us...</span>
-                </p>
-                <div id="rose-garden" class="rose-garden" aria-live="polite"></div>
-                <p class="rose-garden-hint">Tap / click to plant an extra rose 🌹</p>
-            </div>
-        </section>
-
-    </main>
-
-    <div id="anniversary-popup" class="popup-overlay">
-        <div class="popup-content">
-            <span class="close-btn">&times;</span>
-            <h2>Happy Weekly Anniversary, My Love!</h2>
-            <div class="popup-letter">
-                <p>My Dearest Amber,</p>
-                <p>Can you believe it's already been another week? Every Sunday feels like a special milestone with you, a reminder of the beautiful journey we've started. Each day, I find myself falling for you more and more, like discovering a new rose in full bloom.</p>
-                <p>This past week has been filled with moments I'll cherish forever, all because you were in them. You bring so much light and happiness into my life, and I can't imagine a single day without you. You're my rose, my everything.</p>
-                <p>Here's to another week of love, laughter, and us. I love you more than words can say. 🌹</p>
-                <p>Forever yours,</p>
-                <p>Dayshan ❤️</p>
-            </div>
-        </div>
     </div>
+    
+    <!-- Modal for image preview -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>© 2025 - Information Disclosure</p>
+        </div>
+    </footer>
 
-    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const galleryContainer = document.getElementById('gallery-container');
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const closeBtn = document.querySelector('.close');
+            
+            // Replace with your actual image folder path
+            const imageFolder = 'src/';
+            
+            // Array of image filenames - replace with your actual image filenames
+            // In a real implementation, you might want to fetch this list from the server
+            const imageFiles = [
+                'image.png',
+                'image1.png',
+                'image2.png',
+                'image3.png',
+                'image4.png',
+                'image5.png',
+                'image6.png',
+                'image7.png',
+                'image8.png',
+                'image9.png',
+                'image10.png',
+                'image11.png',
+                'image12.png',
+                'image13.png',
+                'image14.png',
+                'image15.png',
+                'image16.png',
+                'image17.png',
+                'image18.png',
+                'image19.png'
+            ];
+            
+            // Function to load gallery images
+            function loadGalleryImages() {
+                galleryContainer.innerHTML = ''; // Clear loading message
+                
+                if (imageFiles.length === 0) {
+                    galleryContainer.innerHTML = '<div class="loading">No images found in the specified folder.</div>';
+                    return;
+                }
+                
+                imageFiles.forEach(filename => {
+                    const imgPath = imageFolder + filename;
+                    
+                    const galleryItem = document.createElement('div');
+                    galleryItem.className = 'gallery-item';
+                    
+                    const img = document.createElement('img');
+                    img.src = imgPath;
+                    img.alt = 'Gallery image';
+                    
+                    galleryItem.appendChild(img);
+                    galleryContainer.appendChild(galleryItem);
+                    
+                    // Add click event to open modal
+                    galleryItem.addEventListener('click', () => {
+                        modal.style.display = 'block';
+                        modalImg.src = imgPath;
+                    });
+                });
+            }
+            
+            // Close modal when clicking the X
+            closeBtn.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+            
+            // Close modal when clicking outside the image
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+            
+            // Initialize the gallery
+            loadGalleryImages();
+        });
+    </script>
 </body>
 </html>
