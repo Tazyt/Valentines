@@ -141,6 +141,48 @@
             color: white;
         }
         
+        /* Popup styles */
+        #first-visit-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(44, 62, 80, 0.95);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        #first-visit-popup div {
+            background: #fff;
+            padding: 2rem 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
+            max-width: 90vw;
+            text-align: center;
+        }
+        
+        #first-visit-popup h2 {
+            margin-bottom: 1rem;
+        }
+        
+        #first-visit-popup p {
+            font-size: 1.15rem;
+            margin-bottom: 2rem;
+        }
+        
+        #close-popup-btn {
+            background: #5865F2;
+            color: #fff;
+            border: none;
+            padding: 0.7rem 2rem;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        
         /* Responsive adjustments */
         @media (max-width: 768px) {
             h1 {
@@ -164,6 +206,17 @@
             <p>Also Known as Nat Darkborn</p>
         </div>
     </header>
+
+    <!-- First visit popup -->
+    <div id="first-visit-popup">
+        <div>
+            <h2>Hello there..</h2>
+            <p>
+                have fun getting the entire chat log exposed. the more you continue the more gets added and the juicer
+            </p>
+            <button id="close-popup-btn">Continue</button>
+        </div>
+    </div>
     
     <div class="container">
         <section class="content-section">
@@ -182,6 +235,12 @@
                 </div>
             </div>
         </section>
+
+        <!-- Emma Section -->
+        <section class="content-section" style="max-width:400px;margin:auto;">
+            <h2>Emma</h2>
+            <p>Hmm you say your not mad yet.. you came at me tbf not mad at all. i just don't get why you come 2 weeks later and sending screenshots which btw.. she saw the chats so whateveer you show is useless.. you are right i did take time for myself till i met someone new. idk why your going around saying i asked for nudes when that never happened. but once again good try. just leave us be and stop coming after me. move on. we do not care what ANY of you guys have to say. and mostly you Katie... i mean just wow what a whore you are holy fuck. you'd like it if you get gangbanged for sure anyways have a good life Emma i have nothing against you and i'd like to leave everything in the past.</p>
+        </section>
         
         <section class="content-section">
             <h2>Image Gallery</h2>
@@ -195,7 +254,7 @@
         <section class="content-section">
             <h2>Additional Information</h2>
             <p>This section contains further details about the individual in question.</p>
-            you keep coming after me yet it fails... anyways enjoy me exposing everything oh and Emma good job for adding her back and believeing her goofy ass 😭 you claim i am dating a 13 year old when no i would never do that.. the person your talking about is Meliz which i made clear on screenshare it's wrong infact she blocked me lmao but congrats. she also sent me the most freakiest shit ever and she smokes damn? looks like you and katie match ngl both whores and more used then a school bag 🔥🔥🔥. Lowkey even your bestfriend coke told me to leave you ahh let's not mention how you had your ex best friend back you up and acted as if she knew everything yet she was never updated with anything and your asses always fighting. kinda goofy icl. keep trying to ruin my shit and il ruin yours. Hmm oh you deleted the messages of you talking shit about her?? aww is something wrong? anyways next is the chat logs on snap tiktok ect. i am going FULL on you. even refusing to remove my best friend?? hmm funny how i removed all girls yet.. when i then added a girl for you having my friend you didn't enjoy it so much.. you said you didn't accept dudes as friends? funny.
+            you keep coming after me yet it fails... anyways enjoy me exposing everything oh and Emma good job for adding her back and believeing her goofy ass 😭 you claim i am dating a 13 year old when no i would never do that.. the person your talking about is Meliz which i made clear on screenshare it's wrong infact she blocked me lmao but congrats. she also sent me the most freakiest shit ever and she smokes damn? looks like you and katie match ngl both whores and more used then a school bag 🔥🔥🔥. Lowkey even your bestfriend coke told me to leave you ahh let's not mention how you had your ex best friend back you up and acted as if she knew everything yet she was never updated with anything and your asses always fighting. kinda goofy icl. keep trying to ruin my shit and il ruin yours. Hmm oh you deleted the messages of you talking shit about her?? aww is something wrong? anyways next is the chat logs on snap tiktok ect. i am going FULL on you. even refusing to remove my best friend?? hmm funny how i removed all girls yet.. when i then added a girl for you having my friend you didn't enjoy it so much.. you said you didn't accept dudes as friends? funny. oh and sending your thighs to my best friend?? calling him baby?? does that ring a bell? oh and using an alt one of his btw to message him??. how are you this big of a whore? no wonder you play Dollhouse Roleplay and Evade. turns out that's where most E-Daters are. but enjoy your life and fuck off because unlike you i actually moved on and i'm not trying to ruin relationships. so let me be. oh and just so you know i'm sending this site to your father so he can see how big of a fucking liar and how big of a slut you are 😭 and you even offered my best friend for nudes?? DAMN. Crazy work.
         </section>
     </div>
     
@@ -288,6 +347,15 @@
                 }
             });
             
+            // Popup logic
+            var popup = document.getElementById('first-visit-popup');
+            var closePopupBtn = document.getElementById('close-popup-btn');
+            if (closePopupBtn) {
+                closePopupBtn.addEventListener('click', function() {
+                    popup.style.display = 'none';
+                });
+            }
+
             // Initialize the gallery
             loadGalleryImages();
         });
